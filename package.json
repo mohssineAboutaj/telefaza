@@ -1,0 +1,64 @@
+{
+  "name": "telefaza",
+  "version": "1.0.0",
+  "description": "A Cross-platform streaming/IPTV app",
+  "productName": "Telefaza",
+  "author": "Mohssine Aboutaj",
+  "keywords": [
+    "iptv",
+    "streaming app",
+    "tv",
+    "m3u",
+    "play",
+    "cross platform",
+    "quasar app"
+  ],
+  "private": true,
+  "scripts": {
+    "dev": "quasar dev",
+    "build": "quasar build",
+    "build:android": "quasar build -m capacitor -T android",
+    "build:electron": "quasar build -m electron",
+    "convert": "node ./src/data/converter.js",
+    "lint": "eslint --ext .js,.vue ./"
+  },
+  "dependencies": {
+    "@capacitor/core": "^2.4.7",
+    "@quasar/extras": "^1.0.0",
+    "core-js": "^3.6.5",
+    "quasar": "^1.0.0",
+    "vue-hls-player": "^1.0.6"
+  },
+  "devDependencies": {
+    "@quasar/app": "^2.0.0",
+    "babel-eslint": "^10.0.1",
+    "devtron": "^1.4.0",
+    "electron": "^9.0.0",
+    "electron-debug": "^3.0.1",
+    "electron-devtools-installer": "^3.0.0",
+    "electron-packager": "^14.1.1",
+    "eslint": "^7.21.0",
+    "eslint-config-prettier": "^8.1.0",
+    "eslint-plugin-vue": "^7.7.0",
+    "eslint-webpack-plugin": "^2.4.0",
+    "fs": "^0.0.1-security",
+    "iptv-playlist-parser": "^0.6.0",
+    "write-json": "^3.0.1"
+  },
+  "browserslist": [
+    "last 10 Chrome versions",
+    "last 10 Firefox versions",
+    "last 4 Edge versions",
+    "last 7 Safari versions",
+    "last 8 Android versions",
+    "last 8 ChromeAndroid versions",
+    "last 8 FirefoxAndroid versions",
+    "last 10 iOS versions",
+    "last 5 Opera versions"
+  ],
+  "engines": {
+    "node": ">= 10.18.1",
+    "npm": ">= 6.13.4",
+    "yarn": ">= 1.21.1"
+  }
+}

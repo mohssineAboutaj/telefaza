@@ -1,0 +1,386 @@
+{
+  "header": {
+    "attrs": {},
+    "raw": "#EXTM3U"
+  },
+  "items": [
+    {
+      "name": "&Flix",
+      "tvg": {
+        "id": "Flix.in",
+        "name": "&Flix",
+        "language": "English",
+        "country": "IN",
+        "logo": "https://static.epg.best/in/AndFlix.in.png",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": "Movies"
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "https://y5w8j4a9.ssl.hwcdn.net/andflixhd/tracks-v1a1/index.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"Flix.in\" tvg-name=\"&Flix\" tvg-country=\"IN\" tvg-language=\"English\" tvg-logo=\"https://static.epg.best/in/AndFlix.in.png\" tvg-url=\"\" group-title=\"Movies\",&Flix\nhttps://y5w8j4a9.ssl.hwcdn.net/andflixhd/tracks-v1a1/index.m3u8"
+    },
+    {
+      "name": "&privé HD",
+      "tvg": {
+        "id": "priveHD.in",
+        "name": "&privé HD",
+        "language": "English",
+        "country": "SAS",
+        "logo": "",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": "Movies"
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "https://y5w8j4a9.ssl.hwcdn.net/andprivehd/tracks-v1a1/index.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"priveHD.in\" tvg-name=\"&privé HD\" tvg-country=\"SAS\" tvg-language=\"English\" tvg-logo=\"\" tvg-url=\"\" group-title=\"Movies\",&privé HD\nhttps://y5w8j4a9.ssl.hwcdn.net/andprivehd/tracks-v1a1/index.m3u8"
+    },
+    {
+      "name": "(GE) 1 TV",
+      "tvg": {
+        "id": "",
+        "name": "",
+        "language": "",
+        "country": "",
+        "logo": "",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "http://tv.cdn.xsg.ge/gpb-1tv/index.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"\" tvg-name=\"\" tvg-country=\"\" tvg-language=\"\" tvg-logo=\"\" tvg-url=\"\" group-title=\"\",(GE) 1 TV\nhttp://tv.cdn.xsg.ge/gpb-1tv/index.m3u8"
+    },
+    {
+      "name": "+23 ES COMO TU HD",
+      "tvg": {
+        "id": "",
+        "name": "",
+        "language": "",
+        "country": "",
+        "logo": "https://www.nexpanama.com/wp-content/uploads/2019/08/m23_Logo_FullHD_EsComoTu-Negro-01_result.png",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "http://198.1.123.99:1935/live/_definst_/myStream/chunklist_w349948659.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"\" tvg-name=\"\" tvg-country=\"\" tvg-language=\"\" tvg-logo=\"https://www.nexpanama.com/wp-content/uploads/2019/08/m23_Logo_FullHD_EsComoTu-Negro-01_result.png\" tvg-url=\"\" group-title=\"\",+23 ES COMO TU HD\nhttp://198.1.123.99:1935/live/_definst_/myStream/chunklist_w349948659.m3u8"
+    },
+    {
+      "name": "-kanal10",
+      "tvg": {
+        "id": "",
+        "name": "",
+        "language": "",
+        "country": "",
+        "logo": "",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "http://cdn-kanal10.crossnet.net:1935/kanal10/mp4:mpegts.stream/chunklist_w1523238254.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"\" tvg-name=\"\" tvg-country=\"\" tvg-language=\"\" tvg-logo=\"\" tvg-url=\"\" group-title=\"\",-kanal10\nhttp://cdn-kanal10.crossnet.net:1935/kanal10/mp4:mpegts.stream/chunklist_w1523238254.m3u8"
+    },
+    {
+      "name": "-kkr",
+      "tvg": {
+        "id": "",
+        "name": "",
+        "language": "",
+        "country": "",
+        "logo": "",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "http://stream.kkr.dk/live/kkr/chunklist_w832247479.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"\" tvg-name=\"\" tvg-country=\"\" tvg-language=\"\" tvg-logo=\"\" tvg-url=\"\" group-title=\"\",-kkr\nhttp://stream.kkr.dk/live/kkr/chunklist_w832247479.m3u8"
+    },
+    {
+      "name": "-makkah",
+      "tvg": {
+        "id": "",
+        "name": "",
+        "language": "",
+        "country": "",
+        "logo": "",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "http://mbningestworld-i.akamaihd.net/hls/live/644021/iraqworldsafe/master_2596.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"\" tvg-name=\"\" tvg-country=\"\" tvg-language=\"\" tvg-logo=\"\" tvg-url=\"\" group-title=\"\",-makkah\nhttp://mbningestworld-i.akamaihd.net/hls/live/644021/iraqworldsafe/master_2596.m3u8"
+    },
+    {
+      "name": "-مكة TV",
+      "tvg": {
+        "id": "",
+        "name": "",
+        "language": "",
+        "country": "",
+        "logo": "",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "http://makkahtv.srfms.com:1935/makkahtv/livestream/chunklist_w1150651953.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"\" tvg-name=\"\" tvg-country=\"\" tvg-language=\"\" tvg-logo=\"\" tvg-url=\"\" group-title=\"\",-مكة TV\nhttp://makkahtv.srfms.com:1935/makkahtv/livestream/chunklist_w1150651953.m3u8"
+    },
+    {
+      "name": "1 Music Channel",
+      "tvg": {
+        "id": "",
+        "name": "",
+        "language": "",
+        "country": "",
+        "logo": "",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "https://ch.iptvmate.net/b8799300af8ecf28e89b77029dfa9e6d.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"\" tvg-name=\"\" tvg-country=\"\" tvg-language=\"\" tvg-logo=\"\" tvg-url=\"\" group-title=\"\",1 Music Channel\nhttps://ch.iptvmate.net/b8799300af8ecf28e89b77029dfa9e6d.m3u8"
+    },
+    {
+      "name": "1 TV (Opt-2)",
+      "tvg": {
+        "id": "",
+        "name": "",
+        "language": "",
+        "country": "",
+        "logo": "",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "http://amtv1.livestreamingcdn.com/am2abr/index.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"\" tvg-name=\"\" tvg-country=\"\" tvg-language=\"\" tvg-logo=\"\" tvg-url=\"\" group-title=\"\",1 TV (Opt-2)\nhttp://amtv1.livestreamingcdn.com/am2abr/index.m3u8"
+    },
+    {
+      "name": "1 TV (Opt-3)",
+      "tvg": {
+        "id": "",
+        "name": "",
+        "language": "",
+        "country": "",
+        "logo": "",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "http://amtv1.livestreamingcdn.com/am2abr/tracks-v5a1/index.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"\" tvg-name=\"\" tvg-country=\"\" tvg-language=\"\" tvg-logo=\"\" tvg-url=\"\" group-title=\"\",1 TV (Opt-3)\nhttp://amtv1.livestreamingcdn.com/am2abr/tracks-v5a1/index.m3u8"
+    },
+    {
+      "name": "1+1",
+      "tvg": {
+        "id": "1Plus1.ua",
+        "name": "1+1",
+        "language": "Ukrainian",
+        "country": "UA",
+        "logo": "",
+        "url": "https://iptvx.one/epg/epg.xml.gz",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "http://spacetv.in/stream/DIPK8H19CP8/172.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"1Plus1.ua\" tvg-name=\"1+1\" tvg-country=\"UA\" tvg-language=\"Ukrainian\" tvg-logo=\"\" tvg-url=\"https://iptvx.one/epg/epg.xml.gz\" group-title=\"\",1+1\nhttp://spacetv.in/stream/DIPK8H19CP8/172.m3u8"
+    },
+    {
+      "name": "1-2-3.tv",
+      "tvg": {
+        "id": "123.tv.de",
+        "name": "1-2-3.tv",
+        "language": "",
+        "country": "",
+        "logo": "https://raw.githubusercontent.com/jnk22/kodinerds-iptv/master/logos/tv/123tv.png",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "https://123tv-mx1.flex-cdn.net/index.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"123.tv.de\" tvg-name=\"1-2-3.tv\" tvg-country=\"\" tvg-language=\"\" tvg-logo=\"https://raw.githubusercontent.com/jnk22/kodinerds-iptv/master/logos/tv/123tv.png\" tvg-url=\"\" group-title=\"\",1-2-3.tv\nhttps://123tv-mx1.flex-cdn.net/index.m3u8"
+    },
+    {
+      "name": "10 Bold [Geo-blocked]",
+      "tvg": {
+        "id": "10Bold.au",
+        "name": "10 Bold",
+        "language": "English",
+        "country": "AU",
+        "logo": "https://i.mjh.nz/.images/tv.101406020627.png",
+        "url": "http://i.mjh.nz/nzau/epg.xml.gz",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "https://i.mjh.nz/au/Sydney/tv.101406020627.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"10Bold.au\" tvg-name=\"10 Bold\" tvg-country=\"AU\" tvg-language=\"English\" tvg-logo=\"https://i.mjh.nz/.images/tv.101406020627.png\" tvg-url=\"http://i.mjh.nz/nzau/epg.xml.gz\" group-title=\"\",10 Bold [Geo-blocked]\nhttps://i.mjh.nz/au/Sydney/tv.101406020627.m3u8"
+    },
+    {
+      "name": "10 Peach [Geo-blocked]",
+      "tvg": {
+        "id": "10Peach.au",
+        "name": "10 Peach",
+        "language": "English",
+        "country": "AU",
+        "logo": "https://i.mjh.nz/.images/tv.101406020628.png",
+        "url": "http://i.mjh.nz/nzau/epg.xml.gz",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "https://i.mjh.nz/au/Sydney/tv.101406020628.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"10Peach.au\" tvg-name=\"10 Peach\" tvg-country=\"AU\" tvg-language=\"English\" tvg-logo=\"https://i.mjh.nz/.images/tv.101406020628.png\" tvg-url=\"http://i.mjh.nz/nzau/epg.xml.gz\" group-title=\"\",10 Peach [Geo-blocked]\nhttps://i.mjh.nz/au/Sydney/tv.101406020628.m3u8"
+    },
+    {
+      "name": "10 Shake Sydney [Geo-blocked]",
+      "tvg": {
+        "id": "10ShakeSydney.au",
+        "name": "10 Shake Sydney",
+        "language": "English",
+        "country": "AU",
+        "logo": "https://i.mjh.nz/.images/tv.101406020623.png",
+        "url": "http://i.mjh.nz/nzau/epg.xml.gz",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "https://i.mjh.nz/au/Sydney/tv.101406020623.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"10ShakeSydney.au\" tvg-name=\"10 Shake Sydney\" tvg-country=\"AU\" tvg-language=\"English\" tvg-logo=\"https://i.mjh.nz/.images/tv.101406020623.png\" tvg-url=\"http://i.mjh.nz/nzau/epg.xml.gz\" group-title=\"\",10 Shake Sydney [Geo-blocked]\nhttps://i.mjh.nz/au/Sydney/tv.101406020623.m3u8"
+    },
+    {
+      "name": "10 Sydney [Geo-blocked]",
+      "tvg": {
+        "id": "10Sydney.au",
+        "name": "10 Sydney",
+        "language": "English",
+        "country": "AU",
+        "logo": "https://i.mjh.nz/.images/tv.101406020625.png",
+        "url": "http://i.mjh.nz/nzau/epg.xml.gz",
+        "rec": ""
+      },
+      "group": {
+        "title": ""
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "https://i.mjh.nz/au/Sydney/tv.101406020625.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"10Sydney.au\" tvg-name=\"10 Sydney\" tvg-country=\"AU\" tvg-language=\"English\" tvg-logo=\"https://i.mjh.nz/.images/tv.101406020625.png\" tvg-url=\"http://i.mjh.nz/nzau/epg.xml.gz\" group-title=\"\",10 Sydney [Geo-blocked]\nhttps://i.mjh.nz/au/Sydney/tv.101406020625.m3u8"
+    },
+    {
+      "name": "100% Auto Moto TV",
+      "tvg": {
+        "id": "",
+        "name": "100% Auto Moto TV",
+        "language": "Russian;English",
+        "country": "RU",
+        "logo": "https://i.imgur.com/PjBm4Ic.jpg",
+        "url": "",
+        "rec": ""
+      },
+      "group": {
+        "title": "Auto"
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "http://100automoto.tv:1935/bgtv1/autotv/playlist.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"\" tvg-name=\"100% Auto Moto TV\" tvg-country=\"RU\" tvg-language=\"Russian;English\" tvg-logo=\"https://i.imgur.com/PjBm4Ic.jpg\" tvg-url=\"\" group-title=\"Auto\",100% Auto Moto TV\nhttp://100automoto.tv:1935/bgtv1/autotv/playlist.m3u8"
+    }
+  ]
+}

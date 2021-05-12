@@ -1,0 +1,12 @@
+{
+  "name": "telefaza",
+  "version": "0.0.1",
+  "description": "A Cross-platform streaming/IPTV appA Cross-platform streaming/IPTV app",
+  "author": "Mohssine Aboutaj",
+  "private": true,
+  "dependencies": {
+    "@capacitor/android": "2.4.7",
+    "@capacitor/cli": "^2.0.0",
+    "@capacitor/core": "^2.0.0"
+  }
+}

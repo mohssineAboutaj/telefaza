@@ -1,0 +1,7 @@
+{
+  "appId": "com.telefaza.app",
+  "appName": "Telefaza",
+  "bundledWebRuntime": false,
+  "npmClient": "yarn",
+  "webDir": "www"
+}
