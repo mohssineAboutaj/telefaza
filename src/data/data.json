@@ -58,7 +58,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -79,7 +79,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -100,7 +100,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -121,7 +121,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -142,7 +142,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -163,7 +163,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -184,7 +184,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -205,7 +205,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -226,7 +226,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -247,7 +247,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -268,7 +268,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -289,7 +289,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -310,7 +310,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -331,7 +331,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -352,7 +352,7 @@
         "rec": ""
       },
       "group": {
-        "title": ""
+        "title": "Ungrouped"
       },
       "http": {
         "referrer": "",
@@ -381,6 +381,48 @@
       },
       "url": "http://100automoto.tv:1935/bgtv1/autotv/playlist.m3u8",
       "raw": "#EXTINF:-1 tvg-id=\"\" tvg-name=\"100% Auto Moto TV\" tvg-country=\"RU\" tvg-language=\"Russian;English\" tvg-logo=\"https://i.imgur.com/PjBm4Ic.jpg\" tvg-url=\"\" group-title=\"Auto\",100% Auto Moto TV\nhttp://100automoto.tv:1935/bgtv1/autotv/playlist.m3u8"
+    },
+    {
+      "name": "100% News",
+      "tvg": {
+        "id": "100News.ua",
+        "name": "100% News",
+        "language": "Ukrainian",
+        "country": "UA",
+        "logo": "https://i.imgur.com/11llLr1.jpg",
+        "url": "https://iptvx.one/epg/epg.xml.gz",
+        "rec": ""
+      },
+      "group": {
+        "title": "News"
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "http://85.238.112.40:8810/hls_sec/239.33.16.32-.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"100News.ua\" tvg-name=\"100% News\" tvg-country=\"UA\" tvg-language=\"Ukrainian\" tvg-logo=\"https://i.imgur.com/11llLr1.jpg\" tvg-url=\"https://iptvx.one/epg/epg.xml.gz\" group-title=\"News\",100% News\nhttp://85.238.112.40:8810/hls_sec/239.33.16.32-.m3u8"
+    },
+    {
+      "name": "101 Tele Antequera",
+      "tvg": {
+        "id": "101TeleAntequera.es",
+        "name": "101 Tele Antequera",
+        "language": "Spanish",
+        "country": "ES",
+        "logo": "https://i.imgur.com/ZhvkYeg.jpg",
+        "url": "https://www.tdtchannels.com/epg/TV.xml",
+        "rec": ""
+      },
+      "group": {
+        "title": "Music"
+      },
+      "http": {
+        "referrer": "",
+        "user-agent": ""
+      },
+      "url": "https://limited38.todostreaming.es/live/101tv-AntequeraHD.m3u8",
+      "raw": "#EXTINF:-1 tvg-id=\"101TeleAntequera.es\" tvg-name=\"101 Tele Antequera\" tvg-country=\"ES\" tvg-language=\"Spanish\" tvg-logo=\"https://i.imgur.com/ZhvkYeg.jpg\" tvg-url=\"https://www.tdtchannels.com/epg/TV.xml\" group-title=\"Music\",101 Tele Antequera\nhttps://limited38.todostreaming.es/live/101tv-AntequeraHD.m3u8"
     }
   ]
 }

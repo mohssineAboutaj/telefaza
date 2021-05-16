@@ -22,6 +22,13 @@
         ></q-btn>
         <q-btn
           color="primary"
+          icon="mdi-fullscreen"
+          round
+          :disable="fresh"
+          @click="videoFullscreen()"
+        ></q-btn>
+        <q-btn
+          color="primary"
           icon="mdi-theme-light-dark"
           round
           @click="toggleDarkTheme()"
@@ -47,7 +54,10 @@
           clickable
           v-for="(channel, c) in channelsList"
           :key="c"
+          :active="selectedChannel.name === channel.name"
+          active-class="text-white bg-primary"
           @click="changeChannel(channel)"
+          @click.once="fresh = false"
         >
           <q-item-section avatar>
             <q-icon name="mdi-television" />
@@ -59,8 +69,29 @@
       </q-list>
     </q-drawer>
 
-    <q-page-container class="flex flex-center">
-      <vplayer :playerOptions="vOption" @onplay="play" :key="vOption.src" />
+    <q-page-container>
+      <q-page class="flex flex-center">
+        <div v-if="fresh" class="text-center text-capitalize">
+          <h1 class="text-h1">{{ originalTitle }}</h1>
+          <h2 class="text-h2">choose a channel</h2>
+          <div class="text-center">
+            <q-btn
+              v-for="cat in categories"
+              :key="cat"
+              color="primary"
+              :label="cat"
+              class="q-ma-xs"
+              @click="getChannelsByCategory(cat)"
+            />
+          </div>
+        </div>
+        <vplayer
+          v-else
+          :playerOptions="vOption"
+          @onplay="play"
+          :key="vOption.src"
+        ></vplayer>
+      </q-page>
     </q-page-container>
   </q-layout>
 </template>
@@ -71,18 +102,22 @@ import { name, description, keywords } from "../package.json";
 export default {
   name: "App",
   data: () => ({
+    fresh: true,
     leftDrawerOpen: false,
     title: "Home",
+    originalTitle: name,
     selectedChannel: {},
     isFavChannel: false,
     searchVal: "",
     channelsList: [],
     originalList: [],
+    allChannelsList: [],
+    categories: [],
     vOption: {
       src: null,
       type: "application/x-mpegURL",
       preload: false,
-      autoplay: !true,
+      autoplay: true,
       isLoop: false,
       playsinline: false,
       controls: "progress,current,durration,volume",
@@ -92,9 +127,9 @@ export default {
   methods: {
     searchForFn() {
       if (this.searchVal) {
-        this.channelsList = this.originalList.filter(el =>
-          el.name.includes(this.searchVal),
-        );
+        this.channelsList = this.originalList.filter(el => {
+          return el.name.search(this.searchVal) > 0;
+        });
       } else {
         this.channelsList = this.originalList;
       }
@@ -103,11 +138,13 @@ export default {
       this.$q.dark.toggle();
     },
     changeChannel(c) {
-      this.selectedChannel = c;
-      this.title = this.selectedChannel.name;
-      this.vOption.src = this.selectedChannel.url;
-      this.vOption.autoplay = true;
-      this.leftDrawerOpen = false;
+      if (this.selectedChannel.name !== c.name) {
+        this.selectedChannel = c;
+        this.title = this.selectedChannel.name;
+        this.vOption.src = this.selectedChannel.url;
+        this.vOption.autoplay = true;
+        this.leftDrawerOpen = false;
+      }
     },
     play(e) {
       console.log(e);
@@ -116,14 +153,34 @@ export default {
       this.isFavChannel = !this.isFavChannel;
       console.log(this.selectedChannel);
     },
+    videoFullscreen() {
+      console.log("videoFullscreen");
+    },
+    getChannelsByCategory(cat) {
+      this.channelsList = [];
+      this.originalList = [];
+
+      if (cat === "all") {
+        this.channelsList = this.originalList = this.allChannelsList;
+      } else {
+        this.$store.getters.getChannelsByCategory(cat).forEach(el => {
+          this.channelsList.push(el);
+          this.originalList.push(el);
+        });
+      }
+    },
   },
   created() {
     this.$q.dark.set(true);
     this.$store.getters.getAllChannels.forEach(el => {
       this.channelsList.push(el);
-      this.originalList.push(el);
     });
-    this.changeChannel(this.originalList[0]);
+    this.allChannelsList = this.originalList = this.channelsList;
+
+    this.categories.push("all");
+    this.$store.getters.getCategories.forEach(cat => {
+      this.categories.push(cat);
+    });
   },
   meta() {
     return {
