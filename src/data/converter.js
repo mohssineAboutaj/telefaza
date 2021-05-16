@@ -17,6 +17,6 @@ result.items.forEach(r => {
   items.push(r);
 });
 
-writeJson(dir + "data.json", { ...result, items: items.slice(0, 20) }, () => {
+writeJson(dir + "data.json", { ...result, items }, () => {
   console.log("done");
 });

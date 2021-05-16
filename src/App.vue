@@ -43,6 +43,7 @@
         v-model.trim="searchVal"
         @input="searchForFn()"
         label="Search"
+        :hint="`Channels count: ${channelsList.length}`"
         filled
         class="q-mt-sm"
       >
@@ -50,29 +51,39 @@
           <q-icon name="mdi-magnify" />
         </template>
       </q-input>
-      <q-list>
-        <q-item
-          clickable
-          v-for="(channel, c) in channelsList"
-          :key="c"
-          :active="selectedChannel.name === channel.name"
-          active-class="text-white bg-primary"
-          @click="changeChannel(channel)"
-          @click.once="fresh = false"
+      <q-scroll-area id="scroll-area-with-virtual-scroll" style="height: 80vh">
+        <q-virtual-scroll
+          :items="channelsList"
+          scroll-target="#scroll-area-with-virtual-scroll > .scroll"
         >
-          <q-item-section avatar>
-            <q-icon name="mdi-television" />
-          </q-item-section>
-          <q-item-section>
-            <q-item-label>{{ channel.name }}</q-item-label>
-          </q-item-section>
-        </q-item>
-      </q-list>
+          <template v-slot="{ item: channel, index: c }">
+            <q-item
+              clickable
+              :key="c"
+              :active="selectedChannel.name === channel.name"
+              active-class="text-white bg-primary"
+              @click="changeChannel(channel)"
+              @click.once="fresh = false"
+            >
+              <q-item-section
+                avatar
+                class="q-mx-0 q-px-0"
+                style="min-width: auto;"
+              >
+                <q-icon name="mdi-television" />
+              </q-item-section>
+              <q-item-section>
+                <q-item-label>{{ channel.name }}</q-item-label>
+              </q-item-section>
+            </q-item>
+          </template>
+        </q-virtual-scroll>
+      </q-scroll-area>
     </q-drawer>
 
     <q-page-container>
       <q-page class="flex flex-center">
-        <div v-if="fresh" class="text-center text-capitalize">
+        <div v-if="fresh" class="text-center text-capitalize padding">
           <h1 class="text-h1">{{ originalTitle }}</h1>
           <h2 class="text-h2">choose a channel</h2>
           <div class="text-center">
@@ -100,7 +111,7 @@
 </template>
 
 <script>
-import { name, description, keywords } from "../package.json";
+import { productName, description, keywords } from "../package.json";
 
 export default {
   name: "App",
@@ -108,7 +119,7 @@ export default {
     fresh: true,
     leftDrawerOpen: false,
     title: "Home",
-    originalTitle: name,
+    originalTitle: productName,
     selectedChannel: {},
     isFavChannel: false,
     searchVal: "",
@@ -122,7 +133,9 @@ export default {
     searchForFn() {
       if (this.searchVal) {
         this.channelsList = this.originalList.filter(el => {
-          return el.name.search(this.searchVal) > 0;
+          return (
+            this.lowerCase(el.name).includes(this.lowerCase(this.searchVal)) > 0
+          );
         });
       } else {
         this.channelsList = this.originalList;
@@ -132,14 +145,17 @@ export default {
       this.$q.dark.toggle();
     },
     changeChannel(c) {
-      if (this.selectedChannel.name !== c.name) {
-        this.selectedChannel = c;
-        this.title = this.selectedChannel.name;
+      if (this.isEmpty(this.selectedChannel))
+        if (this.selectedChannel.name !== c.name) {
+          this.selectedChannel = c;
+          this.title = this.selectedChannel.name;
+          this.closeLeftDrawer();
+        }
+    },
+    closeLeftDrawer() {
+      if (this.$q.screen.sm || this.$q.screen.xs) {
         this.leftDrawerOpen = false;
       }
-    },
-    play(e) {
-      console.log(e);
     },
     toggleFav() {
       this.isFavChannel = !this.isFavChannel;
@@ -166,7 +182,6 @@ export default {
     });
     this.allChannelsList = this.originalList = this.channelsList;
 
-    this.categories.push("all");
     this.$store.getters.getCategories.forEach(cat => {
       this.categories.push(cat);
     });
@@ -175,13 +190,21 @@ export default {
     return {
       title: this.title,
       titleTemplate: function(title) {
-        return `${this.title} | ${name}`;
+        return `${this.title} | ${productName}`;
       },
       meta: {
         description: { name: "description", content: description },
         keywords: { name: "keywords", content: keywords.join(",") },
       },
     };
+  },
+  watch: {
+    fresh(v) {
+      if (v === true) {
+        this.selectedChannel = {};
+        this.title = "Home";
+      }
+    },
   },
 };
 </script>

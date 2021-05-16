@@ -15,7 +15,7 @@ export default {
       return data.find(c => c.name === name);
     },
     getCategories({ data }) {
-      const list = [];
+      const list = ["All"];
 
       data.forEach(d => {
         const cat = d.group.title;
@@ -24,7 +24,8 @@ export default {
         }
       });
 
-      return list;
+      // result
+      return list.sort();
     },
     getChannelsByCategory: ({ data }) => cat => {
       return data.filter(d => d.group.title === cat);

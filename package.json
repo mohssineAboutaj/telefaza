@@ -1,6 +1,6 @@
 {
   "name": "telefaza",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A Cross-platform streaming/IPTV app",
   "productName": "Telefaza",
   "author": "Mohssine Aboutaj",
@@ -26,6 +26,7 @@
     "@capacitor/core": "^2.4.7",
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
+    "lodash": "^4.17.21",
     "quasar": "^1.0.0",
     "vue-player-media": "^1.1.4"
   },
