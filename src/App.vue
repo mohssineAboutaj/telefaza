@@ -11,6 +11,14 @@
           @click="leftDrawerOpen = !leftDrawerOpen"
         />
 
+        <q-btn
+          v-if="!fresh"
+          color="primary"
+          icon="mdi-home"
+          round
+          @click="fresh = true"
+        ></q-btn>
+
         <q-toolbar-title>{{ title }}</q-toolbar-title>
 
         <q-btn
@@ -19,13 +27,6 @@
           :icon="`mdi-heart${isFavChannel ? '' : '-outline'}`"
           round
           @click="toggleFav()"
-        ></q-btn>
-        <q-btn
-          color="primary"
-          icon="mdi-fullscreen"
-          round
-          :disable="fresh"
-          @click="videoFullscreen()"
         ></q-btn>
         <q-btn
           color="primary"
@@ -85,12 +86,14 @@
             />
           </div>
         </div>
-        <vplayer
+        <vue-player
           v-else
-          :playerOptions="vOption"
-          @onplay="play"
-          :key="vOption.src"
-        ></vplayer>
+          type="m3u8"
+          :auto="autoplay"
+          :isSwf="false"
+          :src="selectedChannel.url"
+          :key="selectedChannel.url"
+        ></vue-player>
       </q-page>
     </q-page-container>
   </q-layout>
@@ -113,16 +116,7 @@ export default {
     originalList: [],
     allChannelsList: [],
     categories: [],
-    vOption: {
-      src: null,
-      type: "application/x-mpegURL",
-      preload: false,
-      autoplay: true,
-      isLoop: false,
-      playsinline: false,
-      controls: "progress,current,durration,volume",
-      crossOrigin: false,
-    },
+    autoplay: true,
   }),
   methods: {
     searchForFn() {
@@ -141,8 +135,6 @@ export default {
       if (this.selectedChannel.name !== c.name) {
         this.selectedChannel = c;
         this.title = this.selectedChannel.name;
-        this.vOption.src = this.selectedChannel.url;
-        this.vOption.autoplay = true;
         this.leftDrawerOpen = false;
       }
     },
@@ -152,9 +144,6 @@ export default {
     toggleFav() {
       this.isFavChannel = !this.isFavChannel;
       console.log(this.selectedChannel);
-    },
-    videoFullscreen() {
-      console.log("videoFullscreen");
     },
     getChannelsByCategory(cat) {
       this.channelsList = [];
