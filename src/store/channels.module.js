@@ -1,8 +1,10 @@
 import { items } from "../data/data.json";
+const { toggleArrayValue } = require("@mohssineaboutaj/utils");
 
 export default {
   state: {
     data: items,
+    favList: [],
   },
   getters: {
     getAllChannels({ data }) {
@@ -29,6 +31,24 @@ export default {
     },
     getChannelsByCategory: ({ data }) => cat => {
       return data.filter(d => d.group.title === cat);
+    },
+    // favourite fn
+    getFavList({ favList }) {
+      return favList;
+    },
+    checkFav: ({ favList }) => toCheck => {
+      return favList.includes(toCheck);
+    },
+  },
+  mutations: {
+    toggleFav({ favList }, payload) {
+      favList = toggleArrayValue(favList, payload);
+    },
+  },
+  actions: {
+    toggleFavChannels({ state, getters, commit }, payload) {
+      commit("toggleFav", payload);
+      return getters.getFavList;
     },
   },
 };

@@ -22,7 +22,7 @@
         <q-toolbar-title>{{ title }}</q-toolbar-title>
 
         <q-btn
-          v-if="false"
+          v-if="!fresh"
           color="primary"
           :icon="`mdi-heart${isFavChannel ? '' : '-outline'}`"
           round
@@ -145,12 +145,15 @@ export default {
       this.$q.dark.toggle();
     },
     changeChannel(c) {
-      if (this.isEmpty(this.selectedChannel))
-        if (this.selectedChannel.name !== c.name) {
-          this.selectedChannel = c;
-          this.title = this.selectedChannel.name;
-          this.closeLeftDrawer();
-        }
+      if (
+        this.isEmpty(this.selectedChannel) ||
+        this.selectedChannel.name !== c.name
+      ) {
+        this.selectedChannel = c;
+        this.title = this.selectedChannel.name;
+        this.closeLeftDrawer();
+      }
+      this.inFav();
     },
     closeLeftDrawer() {
       if (this.$q.screen.sm || this.$q.screen.xs) {
@@ -159,13 +162,18 @@ export default {
     },
     toggleFav() {
       this.isFavChannel = !this.isFavChannel;
-      console.log(this.selectedChannel);
+
+      this.$store
+        .dispatch("toggleFavChannels", this.selectedChannel.name)
+        .then(res => {
+          console.log(res);
+        });
     },
     getChannelsByCategory(cat) {
       this.channelsList = [];
       this.originalList = [];
 
-      if (cat === "all") {
+      if (this.lowerCase(cat) === "all") {
         this.channelsList = this.originalList = this.allChannelsList;
       } else {
         this.$store.getters.getChannelsByCategory(cat).forEach(el => {
@@ -174,9 +182,15 @@ export default {
         });
       }
     },
+    inFav() {
+      this.isFavChannel = this.$store.getters.checkFav(
+        this.selectedChannel.name,
+      );
+    },
   },
   created() {
     this.$q.dark.set(true);
+    this.inFav();
     this.$store.getters.getAllChannels.forEach(el => {
       this.channelsList.push(el);
     });

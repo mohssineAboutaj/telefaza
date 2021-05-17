@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "@capacitor/core": "^2.4.7",
+    "@mohssineaboutaj/utils": "^1.2.14",
     "@quasar/extras": "^1.0.0",
     "core-js": "^3.6.5",
     "lodash": "^4.17.21",
