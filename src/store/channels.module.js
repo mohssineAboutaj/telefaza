@@ -33,8 +33,12 @@ export default {
       return data.filter(d => d.group.title === cat);
     },
     // favourite fn
-    getFavList({ favList }) {
-      return favList;
+    getFavList({ favList, data }) {
+      return data.filter(c => {
+        if (favList.includes(c.name)) {
+          return c;
+        }
+      });
     },
     checkFav: ({ favList }) => toCheck => {
       return favList.includes(toCheck);

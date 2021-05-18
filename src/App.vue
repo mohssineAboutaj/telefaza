@@ -83,9 +83,8 @@
 
     <q-page-container>
       <q-page class="flex flex-center">
-        <div v-if="fresh" class="text-center text-capitalize padding">
+        <div v-if="fresh" class="text-center text-capitalize q-pa-md">
           <h1 class="text-h1">{{ originalTitle }}</h1>
-          <h2 class="text-h2">choose a channel</h2>
           <div class="text-center">
             <q-btn
               v-for="cat in categories"
@@ -175,6 +174,8 @@ export default {
 
       if (this.lowerCase(cat) === "all") {
         this.channelsList = this.originalList = this.allChannelsList;
+      } else if (this.lowerCase(cat) === "favourites") {
+        this.channelsList = this.originalList = this.$store.getters.getFavList;
       } else {
         this.$store.getters.getChannelsByCategory(cat).forEach(el => {
           this.channelsList.push(el);
@@ -199,6 +200,7 @@ export default {
     this.$store.getters.getCategories.forEach(cat => {
       this.categories.push(cat);
     });
+    this.categories.unshift("favourites");
   },
   meta() {
     return {
