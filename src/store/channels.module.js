@@ -1,4 +1,4 @@
-import { items } from "../data/data.json";
+import items from "../data/data.json";
 const { toggleArrayValue } = require("@mohssineaboutaj/utils");
 
 export default {
@@ -20,7 +20,7 @@ export default {
       const list = ["All"];
 
       data.forEach(d => {
-        const cat = d.group.title;
+        const cat = d.category;
         if (!list.includes(cat)) {
           list.push(cat);
         }
@@ -30,7 +30,7 @@ export default {
       return list.sort();
     },
     getChannelsByCategory: ({ data }) => cat => {
-      return data.filter(d => d.group.title === cat);
+      return data.filter(d => d.category === cat);
     },
     // favourite fn
     getFavList({ favList, data }) {
@@ -45,14 +45,13 @@ export default {
     },
   },
   mutations: {
-    toggleFav({ favList }, payload) {
-      favList = toggleArrayValue(favList, payload);
+    toggleFav(state, payload) {
+      const { favList } = state;
+      state.favList = toggleArrayValue(favList, payload);
+      localStorage.setItem("fav", JSON.stringify(favList));
     },
-  },
-  actions: {
-    toggleFavChannels({ state, getters, commit }, payload) {
-      commit("toggleFav", payload);
-      return getters.getFavList;
+    setFav(state) {
+      state.favList = JSON.parse(localStorage.getItem("fav"));
     },
   },
 };

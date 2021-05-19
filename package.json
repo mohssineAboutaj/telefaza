@@ -1,6 +1,6 @@
 {
   "name": "telefaza",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "A Cross-platform streaming/IPTV app",
   "productName": "Telefaza",
   "author": "Mohssine Aboutaj",
@@ -43,8 +43,6 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^7.7.0",
     "eslint-webpack-plugin": "^2.4.0",
-    "fs": "^0.0.1-security",
-    "iptv-playlist-parser": "^0.6.0",
     "write-json": "^3.0.1"
   },
   "browserslist": [

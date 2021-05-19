@@ -1,22 +1,21 @@
-const { readFileSync } = require("fs");
-const iptvPlaylistParser = require("iptv-playlist-parser");
+const { isEmpty, lowerCase } = require("lodash");
 const writeJson = require("write-json");
 
 const dir = process.cwd() + "/src/data/";
-
-const playlist = readFileSync(dir + "playlist.m3u", {
-  encoding: "utf-8",
-});
-
-const result = iptvPlaylistParser.parse(playlist);
-
+const result = require(dir + "channels.json");
 const items = [];
 
-result.items.forEach(r => {
-  r.group.title = r.group.title === "" ? "Ungrouped" : r.group.title;
-  items.push(r);
+result.forEach(r => {
+  if (isEmpty(r.category)) {
+    r.category = "Uncategorized";
+  }
+
+  // filter adults
+  if (lowerCase(r.category) !== "xxx") {
+    items.push(r);
+  }
 });
 
-writeJson(dir + "data.json", { ...result, items }, () => {
+writeJson(dir + "data.json", items, () => {
   console.log("done");
 });

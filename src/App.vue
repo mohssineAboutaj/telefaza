@@ -17,7 +17,9 @@
           icon="mdi-home"
           round
           @click="fresh = true"
-        ></q-btn>
+        >
+          <q-tooltip>{{ titleCase("back to home") }}</q-tooltip>
+        </q-btn>
 
         <q-toolbar-title>{{ title }}</q-toolbar-title>
 
@@ -27,7 +29,12 @@
           :icon="`mdi-heart${isFavChannel ? '' : '-outline'}`"
           round
           @click="toggleFav()"
-        ></q-btn>
+        >
+          <q-tooltip class="text-capitalize">
+            {{ isFavChannel ? titleCase("remove from") : titleCase("add to") }}
+            favourites
+          </q-tooltip>
+        </q-btn>
         <q-btn
           color="primary"
           icon="mdi-theme-light-dark"
@@ -43,7 +50,7 @@
         v-model.trim="searchVal"
         @input="searchForFn()"
         label="Search"
-        :hint="`Channels count: ${channelsList.length}`"
+        :hint="`Total Channels: ${channelsList.length}`"
         filled
         class="q-mt-sm"
       >
@@ -51,7 +58,7 @@
           <q-icon name="mdi-magnify" />
         </template>
       </q-input>
-      <q-scroll-area id="scroll-area-with-virtual-scroll" style="height: 80vh">
+      <q-scroll-area id="scroll-area-with-virtual-scroll" style="height: 70vh">
         <q-virtual-scroll
           :items="channelsList"
           scroll-target="#scroll-area-with-virtual-scroll > .scroll"
@@ -89,9 +96,11 @@
             <q-btn
               v-for="cat in categories"
               :key="cat"
+              glossy
               color="primary"
               :label="cat"
               class="q-ma-xs"
+              size="md"
               @click="getChannelsByCategory(cat)"
             />
           </div>
@@ -126,18 +135,19 @@ export default {
     originalList: [],
     allChannelsList: [],
     categories: [],
+    selectedCategory: "all",
     autoplay: true,
   }),
   methods: {
     searchForFn() {
-      if (this.searchVal) {
+      if (this.isEmpty(this.searchVal)) {
+        this.channelsList = this.originalList;
+      } else {
         this.channelsList = this.originalList.filter(el => {
           return (
             this.lowerCase(el.name).includes(this.lowerCase(this.searchVal)) > 0
           );
         });
-      } else {
-        this.channelsList = this.originalList;
       }
     },
     toggleDarkTheme() {
@@ -162,25 +172,24 @@ export default {
     toggleFav() {
       this.isFavChannel = !this.isFavChannel;
 
-      this.$store
-        .dispatch("toggleFavChannels", this.selectedChannel.name)
-        .then(res => {
-          console.log(res);
-        });
+      this.$store.commit("toggleFav", this.selectedChannel.name);
     },
     getChannelsByCategory(cat) {
       this.channelsList = [];
       this.originalList = [];
+      this.selectedCategory = cat;
 
-      if (this.lowerCase(cat) === "all") {
+      if (this.lowerCase(this.selectedCategory) === "all") {
         this.channelsList = this.originalList = this.allChannelsList;
-      } else if (this.lowerCase(cat) === "favourites") {
+      } else if (this.lowerCase(this.selectedCategory) === "favourites") {
         this.channelsList = this.originalList = this.$store.getters.getFavList;
       } else {
-        this.$store.getters.getChannelsByCategory(cat).forEach(el => {
-          this.channelsList.push(el);
-          this.originalList.push(el);
-        });
+        this.$store.getters
+          .getChannelsByCategory(this.selectedCategory)
+          .forEach(el => {
+            this.channelsList.push(el);
+            this.originalList.push(el);
+          });
       }
     },
     inFav() {
@@ -188,6 +197,9 @@ export default {
         this.selectedChannel.name,
       );
     },
+  },
+  beforeCreate() {
+    this.$store.commit("setFav");
   },
   created() {
     this.$q.dark.set(true);
