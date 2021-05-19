@@ -1,4 +1,4 @@
-const { isEmpty, lowerCase } = require("lodash");
+const { isEmpty, lowerCase, uniqBy } = require("lodash");
 const writeJson = require("write-json");
 
 const dir = process.cwd() + "/src/data/";
@@ -10,12 +10,23 @@ result.forEach(r => {
     r.category = "Uncategorized";
   }
 
+  // update/set id
+  if (isEmpty(r.tvg.id)) {
+    r.tvg.id = lowerCase(r.name).replace(/ /g, ".");
+  }
+
   // filter adults
   if (lowerCase(r.category) !== "xxx") {
     items.push(r);
   }
 });
 
-writeJson(dir + "data.json", items, () => {
-  console.log("done");
-});
+writeJson(
+  dir + "data.json",
+  uniqBy(items, el => {
+    return el.name;
+  }),
+  () => {
+    console.log("done");
+  },
+);

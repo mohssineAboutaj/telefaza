@@ -1,3 +1,4 @@
+import { lowerCase } from "lodash";
 import items from "../data/data.json";
 const { toggleArrayValue } = require("@mohssineaboutaj/utils");
 
@@ -30,7 +31,7 @@ export default {
       return list.sort();
     },
     getChannelsByCategory: ({ data }) => cat => {
-      return data.filter(d => d.category === cat);
+      return data.filter(d => lowerCase(d.category) === lowerCase(cat));
     },
     // favourite fn
     getFavList({ favList, data }) {
@@ -48,10 +49,10 @@ export default {
     toggleFav(state, payload) {
       const { favList } = state;
       state.favList = toggleArrayValue(favList, payload);
-      localStorage.setItem("fav", JSON.stringify(favList));
+      window.localStorage.setItem("fav", JSON.stringify(favList));
     },
     setFav(state) {
-      state.favList = JSON.parse(localStorage.getItem("fav"));
+      state.favList = JSON.parse(window.localStorage.getItem("fav"));
     },
   },
 };

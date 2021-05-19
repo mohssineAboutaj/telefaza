@@ -7,6 +7,8 @@
 // https://v1.quasar.dev/quasar-cli/quasar-conf-js
 /* eslint-env node */
 const ESLintPlugin = require("eslint-webpack-plugin");
+const { startCase } = require("lodash");
+const pkg = require("./package.json");
 
 module.exports = function(/* ctx */) {
   return {
@@ -110,9 +112,9 @@ module.exports = function(/* ctx */) {
       workboxPluginMode: "GenerateSW", // 'GenerateSW' or 'InjectManifest'
       workboxOptions: {}, // only for GenerateSW
       manifest: {
-        name: `Telefaza`,
-        short_name: `Telefaza`,
-        description: `A Cross-platform streaming/IPTV appA Cross-platform streaming/IPTV app`,
+        name: startCase(pkg.name),
+        short_name: startCase(pkg.name),
+        description: startCase(pkg.description),
         display: "standalone",
         orientation: "portrait",
         background_color: "#ffffff",
@@ -175,7 +177,7 @@ module.exports = function(/* ctx */) {
       builder: {
         // https://www.electron.build/configuration/configuration
 
-        appId: "telefaza",
+        appId: pkg.name,
       },
 
       // More info: https://v1.quasar.dev/quasar-cli/developing-electron-apps/node-integration

@@ -1,18 +1,9 @@
 {
   "name": "telefaza",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "A Cross-platform streaming/IPTV app",
   "productName": "Telefaza",
   "author": "Mohssine Aboutaj",
-  "keywords": [
-    "iptv",
-    "streaming app",
-    "tv",
-    "m3u",
-    "play",
-    "cross platform",
-    "quasar app"
-  ],
   "private": true,
   "scripts": {
     "dev": "quasar dev",
@@ -55,6 +46,15 @@
     "last 8 FirefoxAndroid versions",
     "last 10 iOS versions",
     "last 5 Opera versions"
+  ],
+  "keywords": [
+    "iptv",
+    "streaming app",
+    "tv",
+    "m3u",
+    "play",
+    "cross platform",
+    "quasar app"
   ],
   "engines": {
     "node": ">= 10.18.1",
