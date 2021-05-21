@@ -1,7 +1,7 @@
 {
   "name": "telefaza",
-  "version": "0.0.1",
-  "description": "A Cross-platform streaming/IPTV appA Cross-platform streaming/IPTV app",
+  "version": "1.0.5",
+  "description": "A Cross-platform streaming/IPTV app",
   "author": "Mohssine Aboutaj",
   "private": true,
   "dependencies": {

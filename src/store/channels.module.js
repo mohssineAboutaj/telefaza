@@ -1,6 +1,7 @@
-import { lowerCase } from "lodash";
+import { isEmpty, lowerCase } from "lodash";
 import items from "../data/data.json";
 const { toggleArrayValue } = require("@mohssineaboutaj/utils");
+const favListLocalStorageKey = "fav";
 
 export default {
   state: {
@@ -49,10 +50,18 @@ export default {
     toggleFav(state, payload) {
       const { favList } = state;
       state.favList = toggleArrayValue(favList, payload);
-      window.localStorage.setItem("fav", JSON.stringify(favList));
+      window.localStorage.setItem(
+        favListLocalStorageKey,
+        JSON.stringify(favList),
+      );
     },
     setFav(state) {
-      state.favList = JSON.parse(window.localStorage.getItem("fav"));
+      const localStorageDataFavList = JSON.parse(
+        window.localStorage.getItem(favListLocalStorageKey),
+      );
+      if (!isEmpty(localStorageDataFavList)) {
+        state.favList = localStorageDataFavList;
+      }
     },
   },
 };

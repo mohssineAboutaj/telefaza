@@ -11,6 +11,16 @@
         @click="$root.$emit('toggle-channels-drawer-event')"
       />
 
+      <q-btn
+        v-if="$route.path === '/'"
+        flat
+        dense
+        round
+        :icon="`mdi-heart${fav ? '' : '-outline'}`"
+        aria-label="Heart"
+        @click="$root.$emit('toggle-fav-event')"
+      />
+
       <q-toolbar-title class="text-capitalize">{{ title }}</q-toolbar-title>
 
       <q-tabs>
@@ -20,7 +30,7 @@
           :label="isSmall ? '' : tab.label"
           :icon="setIconStyleByRoute(tab.to, tab.icon)"
           :to="tab.to"
-          exact
+          @click="$root.$emit('update-appbar-title-event', tab.label)"
         >
           <q-tooltip>{{ titleCase(tab.label) }}</q-tooltip>
         </q-route-tab>
@@ -33,8 +43,10 @@
 import { productName, description, keywords } from "../../package.json";
 
 export default {
-  name: "App",
+  name: "NavbarComponent",
   data: () => ({
+    fav: false,
+    title: productName,
     items: [
       {
         label: "home",
@@ -54,9 +66,6 @@ export default {
     ],
   }),
   computed: {
-    title() {
-      return this.items.find(el => el.to === this.$route.path).label;
-    },
     isSmall() {
       return this.$q.screen.sm || this.$q.screen.xs;
     },
@@ -70,7 +79,15 @@ export default {
     },
   },
   created() {
-    this.$q.dark.set(true);
+    this.title = this.items.find(el => el.to === this.$route.path).label;
+
+    this.$root.$on("update-appbar-title-event", t => {
+      this.title = t;
+    });
+
+    this.$root.$on("set-fav-event", f => {
+      this.fav = f;
+    });
   },
   meta() {
     return {

@@ -1,20 +1,32 @@
 <template>
   <q-page>
     <q-tabs
+      v-if="false"
       v-model="selectedCategory"
-      class="bg-primary"
+      class="bg-primary text-secondary"
       active-bg-color="primary"
+      active-color="white"
+      mobile-arrows
+      outside-arrows
     >
       <q-tab
         v-for="cat in categories"
         :key="cat"
         @click="getChannelsByCategory(cat)"
-        :name="lowerCase(cat)"
+        :name="cat"
         :label="cat"
       />
     </q-tabs>
 
     <q-drawer v-model="channelsDrawerOpen" show-if-above bordered>
+      <q-select
+        v-model="selectedCategory"
+        :options="categories"
+        label="Category"
+        filled
+        @input="getChannelsByCategory"
+      />
+
       <q-input
         label-color="white"
         v-model.trim="searchVal"
@@ -28,7 +40,6 @@
           <q-icon name="mdi-magnify" />
         </template>
       </q-input>
-
       <q-separator spaced />
 
       <q-scroll-area id="scroll-area-with-virtual-scroll" style="height: 70vh">
@@ -73,7 +84,6 @@
         :isSwf="false"
         :src="selectedChannel.url"
         :key="selectedChannel.url"
-        @dblclick="gg"
       ></vue-player>
     </q-page>
   </q-page>
@@ -86,7 +96,7 @@ export default {
   name: "Home",
   data: () => ({
     fresh: true,
-    channelsDrawerOpen: true,
+    channelsDrawerOpen: false,
     title: "Home",
     originalTitle: productName,
     selectedChannel: {},
@@ -99,6 +109,11 @@ export default {
     selectedCategory: "all",
     autoplay: true,
   }),
+  computed: {
+    screen() {
+      return this.$q.screen;
+    },
+  },
   methods: {
     searchForFn() {
       if (this.isEmpty(this.searchVal)) {
@@ -122,12 +137,15 @@ export default {
         this.selectedChannel = c;
         this.title = this.selectedChannel.name;
         this.closeLeftDrawer();
+        this.$root.$emit("update-appbar-title-event", this.title);
       }
       this.inFav();
     },
     closeLeftDrawer() {
-      if (this.$q.screen.sm || this.$q.screen.xs) {
+      if (this.screen.sm || this.screen.xs) {
         this.channelsDrawerOpen = false;
+      } else {
+        this.channelsDrawerOpen = true;
       }
     },
     toggleFav() {
@@ -135,7 +153,7 @@ export default {
 
       this.$store.commit("toggleFav", this.selectedChannel.name);
     },
-    getChannelsByCategory(cat) {
+    getChannelsByCategory(cat = "all") {
       this.channelsList = [];
       this.originalList = [];
       this.selectedCategory = this.lowerCase(cat);
@@ -159,18 +177,20 @@ export default {
         this.selectedChannel.name,
       );
     },
-    gg() {
-      console.log("gg");
+    gg(g) {
+      console.log(g);
     },
   },
   beforeCreate() {
-    this.$store.commit("setFav");
     this.$root.$on("toggle-channels-drawer-event", () => {
       this.channelsDrawerOpen = !this.channelsDrawerOpen;
     });
+
+    this.$root.$on("toggle-fav-event", () => {
+      this.toggleFav();
+    });
   },
   created() {
-    this.$q.dark.set(true);
     this.inFav();
     this.$store.getters.getAllChannels.forEach(el => {
       this.channelsList.push(el);
@@ -178,10 +198,21 @@ export default {
     this.allChannelsList = this.originalList = this.channelsList;
 
     this.$store.getters.getCategories.forEach(cat => {
-      this.categories.push(cat);
+      this.categories.push(this.lowerCase(cat));
     });
     this.categories.unshift("favourites");
+
     this.closeLeftDrawer();
+
+    // chanels/category by query params
+    const categoryParam = this.$route.query.category;
+    if (
+      !this.isEmpty(categoryParam) &&
+      this.categories.includes(categoryParam)
+    ) {
+      this.selectedCategory = categoryParam;
+      this.getChannelsByCategory(this.selectedCategory);
+    }
   },
   meta() {
     return {
@@ -201,6 +232,9 @@ export default {
         this.selectedChannel = {};
         this.title = "Home";
       }
+    },
+    isFavChannel(v) {
+      this.$root.$emit("set-fav-event", v);
     },
   },
 };

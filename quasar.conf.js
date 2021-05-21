@@ -23,6 +23,11 @@ module.exports = function(/* ctx */) {
     // https://v1.quasar.dev/quasar-cli/boot-files
     boot: ["mixins.js", "vue-player.js"],
 
+    bin: {
+      linuxAndroidStudio:
+        "/snap/android-studio/current/android-studio/bin/studio.sh",
+    },
+
     // https://v1.quasar.dev/quasar-cli/quasar-conf-js#Property%3A-css
     css: ["app.scss"],
 

@@ -13,5 +13,9 @@ import navbarComponent from "./components/navbar.component.vue";
 export default {
   name: "App",
   components: { navbarComponent },
+  created() {
+    this.$store.commit("setFav");
+    this.$q.dark.set(true);
+  },
 };
 </script>
