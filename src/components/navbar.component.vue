@@ -3,19 +3,21 @@
     <q-toolbar>
       <q-btn
         v-if="$route.path === '/'"
-        flat
-        dense
-        round
+        v-bind="iconsSharedProps"
         icon="mdi-menu"
         aria-label="Menu"
         @click="$root.$emit('toggle-channels-drawer-event')"
       />
+      <q-btn
+        v-else
+        v-bind="iconsSharedProps"
+        icon="mdi-television-classic"
+        to="/"
+      />
 
       <q-btn
-        v-if="$route.path === '/'"
-        flat
-        dense
-        round
+        v-if="startWatching"
+        v-bind="iconsSharedProps"
         :icon="`mdi-heart${fav ? '' : '-outline'}`"
         aria-label="Heart"
         @click="$root.$emit('toggle-fav-event')"
@@ -45,7 +47,15 @@ import { productName, description, keywords } from "../../package.json";
 export default {
   name: "NavbarComponent",
   data: () => ({
+    // icons shared props
+    iconsSharedProps: {
+      flat: true,
+      dense: true,
+      round: true,
+    },
+    // data
     fav: false,
+    startWatching: false,
     title: productName,
     items: [
       {
@@ -79,10 +89,12 @@ export default {
     },
   },
   created() {
-    this.title = this.items.find(el => el.to === this.$route.path).label;
-
     this.$root.$on("update-appbar-title-event", t => {
       this.title = t;
+    });
+
+    this.$root.$on("start-watching-event", s => {
+      this.startWatching = s;
     });
 
     this.$root.$on("set-fav-event", f => {

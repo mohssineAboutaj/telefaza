@@ -63,5 +63,13 @@ export default {
         state.favList = localStorageDataFavList;
       }
     },
+    deleteAllFav(state) {
+      const { favList } = state;
+      state.favList = [];
+      window.localStorage.setItem(
+        favListLocalStorageKey,
+        JSON.stringify(favList),
+      );
+    },
   },
 };

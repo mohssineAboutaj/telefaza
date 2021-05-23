@@ -12,11 +12,23 @@
 </template>
 
 <script>
-import { description } from "../../package.json";
+import { description, productName } from "../../package.json";
 
 export default {
   data: () => ({
+    title: "About",
     description,
   }),
+  created() {
+    this.$root.$emit("update-appbar-title-event", this.title);
+  },
+  meta() {
+    return {
+      title: this.title,
+      titleTemplate: function(title) {
+        return `${this.title} | ${productName}`;
+      },
+    };
+  },
 };
 </script>

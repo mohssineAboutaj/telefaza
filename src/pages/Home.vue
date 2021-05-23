@@ -20,12 +20,22 @@
 
     <q-drawer v-model="channelsDrawerOpen" show-if-above bordered>
       <q-select
-        v-model="selectedCategory"
-        :options="categories"
-        label="Category"
         filled
+        :value="titleCase(selectedCategory)"
+        use-input
+        hide-selected
+        fill-input
+        input-debounce="0"
+        :options="options"
+        hint="titleCase('filter by category')"
+        @filter="filterFn"
         @input="getChannelsByCategory"
-      />
+        options-selected-class="text-secondary"
+      >
+        <template v-slot:prepend>
+          <q-icon name="mdi-tag-multiple" />
+        </template>
+      </q-select>
 
       <q-input
         label-color="white"
@@ -105,6 +115,7 @@ export default {
     channelsList: [],
     originalList: [],
     allChannelsList: [],
+    options: [],
     categories: [],
     selectedCategory: "all",
     autoplay: true,
@@ -157,11 +168,10 @@ export default {
       this.channelsList = [];
       this.originalList = [];
       this.selectedCategory = this.lowerCase(cat);
-      console.log(this.selectedCategory);
 
-      if (this.lowerCase(this.selectedCategory) === "all") {
+      if (this.selectedCategory === "all") {
         this.channelsList = this.originalList = this.allChannelsList;
-      } else if (this.lowerCase(this.selectedCategory) === "favourites") {
+      } else if (this.selectedCategory === "favourites") {
         this.channelsList = this.originalList = this.$store.getters.getFavList;
       } else {
         this.$store.getters
@@ -179,6 +189,17 @@ export default {
     },
     gg(g) {
       console.log(g);
+    },
+    filterFn(val, update) {
+      update(() => {
+        this.options = this.categories
+          .filter(v => {
+            return v.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) > -1;
+          })
+          .map(o => {
+            return (o = this.titleCase(o));
+          });
+      });
     },
   },
   beforeCreate() {
@@ -226,11 +247,16 @@ export default {
       },
     };
   },
+  beforeDestroy() {
+    this.$root.$emit("start-watching-event", false);
+  },
   watch: {
     fresh(v) {
       if (v === true) {
         this.selectedChannel = {};
         this.title = "Home";
+      } else {
+        this.$root.$emit("start-watching-event", true);
       }
     },
     isFavChannel(v) {
