@@ -84,8 +84,10 @@
 
     <q-page class="flex flex-center">
       <div v-if="fresh" class="text-center text-capitalize q-pa-md">
-        <h1 class="text-h1">{{ originalTitle }}</h1>
-        <h3 class="text-h3">choose a channel/category</h3>
+        <h1 class="text-h3">{{ originalTitle }}</h1>
+        <h3 class="text-h6">
+          watch your favourite TV channel online
+        </h3>
       </div>
       <vue-player
         v-else

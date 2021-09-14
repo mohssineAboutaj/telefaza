@@ -8,12 +8,7 @@
         aria-label="Menu"
         @click="$root.$emit('toggle-channels-drawer-event')"
       />
-      <q-btn
-        v-else
-        v-bind="iconsSharedProps"
-        icon="mdi-television-classic"
-        to="/"
-      />
+      <q-btn v-else v-bind="iconsSharedProps" icon="mdi-home" to="/" />
 
       <q-btn
         v-if="startWatching"
@@ -25,18 +20,26 @@
 
       <q-toolbar-title class="text-capitalize">{{ title }}</q-toolbar-title>
 
-      <q-tabs>
-        <q-route-tab
-          v-for="tab in items"
-          :key="tab.label"
-          :label="isSmall ? '' : tab.label"
-          :icon="setIconStyleByRoute(tab.to, tab.icon)"
-          :to="tab.to"
-          @click="$root.$emit('update-appbar-title-event', tab.label)"
-        >
-          <q-tooltip>{{ titleCase(tab.label) }}</q-tooltip>
-        </q-route-tab>
-      </q-tabs>
+      <q-btn icon="mdi-dots-vertical" aria-label="Setting">
+        <q-menu>
+          <q-list>
+            <q-item
+              v-for="item in items"
+              :key="item.label"
+              :to="item.to"
+              active-class="text-white bg-primary"
+              router
+              exact
+              @click="$root.$emit('update-appbar-title-event', item.label)"
+            >
+              <q-item-section avatar>
+                <q-icon :name="item.icon" />
+              </q-item-section>
+              <q-item-section>{{ item.label }}</q-item-section>
+            </q-item>
+          </q-list>
+        </q-menu>
+      </q-btn>
     </q-toolbar>
   </q-header>
 </template>

@@ -1,40 +1,42 @@
 <template>
   <q-page-container>
-    <q-card class="text-capitalize" padding>
-      <q-card-section>
-        <h2 class="text-h2 text-center">Settings</h2>
-      </q-card-section>
-      <q-card-section>
-        <q-list>
-          <q-item v-ripple>
-            <q-item-section avatar>
-              <q-icon name="mdi-bookmark" />
-            </q-item-section>
-            <q-item-section>remove all favourites channels</q-item-section>
-            <q-item-section avatar>
-              <q-btn
-                color="negative"
-                icon="mdi-delete"
-                @click="confirmDelete = !confirmDelete"
-              >
-                <q-tooltip>Delete</q-tooltip>
-              </q-btn>
-            </q-item-section>
-          </q-item>
-          <q-item v-ripple>
-            <q-item-section avatar>
-              <q-icon name="mdi-volume-off" />
-            </q-item-section>
-            <q-item-section>muted channedl when playing</q-item-section>
-            <q-item-section avatar>
-              <q-toggle color="primary" v-model="muted">
-                <q-tooltip>Toggle Mute</q-tooltip>
-              </q-toggle>
-            </q-item-section>
-          </q-item>
-        </q-list>
-      </q-card-section>
-    </q-card>
+    <q-page padding>
+      <q-card class="text-capitalize" padding>
+        <q-card-section>
+          <h2 class="text-h2 text-center">Settings</h2>
+        </q-card-section>
+        <q-card-section>
+          <q-list>
+            <q-item v-ripple>
+              <q-item-section avatar>
+                <q-icon name="mdi-bookmark" />
+              </q-item-section>
+              <q-item-section>remove all favourites channels</q-item-section>
+              <q-item-section avatar>
+                <q-btn
+                  color="negative"
+                  icon="mdi-delete"
+                  @click="confirmDelete = !confirmDelete"
+                >
+                  <q-tooltip>Delete</q-tooltip>
+                </q-btn>
+              </q-item-section>
+            </q-item>
+            <q-item v-ripple>
+              <q-item-section avatar>
+                <q-icon name="mdi-volume-off" />
+              </q-item-section>
+              <q-item-section>muted channedl when playing</q-item-section>
+              <q-item-section avatar>
+                <q-toggle color="primary" v-model="muted">
+                  <q-tooltip>Toggle Mute</q-tooltip>
+                </q-toggle>
+              </q-item-section>
+            </q-item>
+          </q-list>
+        </q-card-section>
+      </q-card>
+    </q-page>
 
     <q-dialog v-model="confirmDelete" persistent>
       <q-card>
