@@ -4,7 +4,8 @@
   "description": "A Cross-platform streaming/IPTV app",
   "productName": "Telefaza",
   "author": "Mohssine Aboutaj",
-  "private": true,
+  "private": false,
+  "license": "MIT",
   "scripts": {
     "dev": "quasar dev",
     "build": "quasar build",

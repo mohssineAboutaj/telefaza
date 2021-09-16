@@ -2,6 +2,10 @@
 
 A Cross-platform streaming/IPTV app
 
+## Release
+
+- [v1.0.8](https://github.com/mohssineAboutaj/telefaza/releases/tag/v1.0.8)
+
 ## Install the dependencies
 
 ```bash
@@ -29,3 +33,7 @@ quasar build
 ### Customize the configuration
 
 See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
+
+### LICENSE
+
+[MIT](./LICENSE)
