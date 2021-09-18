@@ -1,12 +1,22 @@
 # Telefaza (telefaza)
 
+## About
+
 A Cross-platform streaming/IPTV app
+
+## Demo
+
+[Live Preview](https://telefaza.netlify.app/)
 
 ## Release
 
 - [v1.0.8](https://github.com/mohssineAboutaj/telefaza/releases/tag/v1.0.8)
 
-## Install the dependencies
+## Devlopement
+
+**Note**: i prefer to use `yarn` instead of `npm`
+
+### Install dependencies
 
 ```bash
 yarn
@@ -15,19 +25,41 @@ yarn
 ### Start the app in development mode (hot-code reloading, error reporting, etc.)
 
 ```bash
-quasar dev
+yarn dev
 ```
 
 ### Lint the files
 
 ```bash
-yarn run lint
+yarn lint
 ```
 
 ### Build the app for production
 
+#### SPA (Default)
+
 ```bash
-quasar build
+yarn build
+```
+
+#### Android (Capacitor)
+
+```bash
+yarn build:android
+```
+
+#### IOS (Capacitor)
+
+```bash
+yarn build:ios
+```
+
+#### Desktop (Electron)
+
+**Note**: Default desktop uotput depend on your working platform
+
+```bash
+yarn build:electron
 ```
 
 ### Customize the configuration
