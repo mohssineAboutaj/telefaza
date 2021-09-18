@@ -2,7 +2,20 @@
 
 ## About
 
-A Cross-platform streaming/IPTV app
+The app allows you to watch any TV channel you want only through your ready and collects you most of the channels you want in one place without having to search for each one separately
+
+## Available versions
+
+**Note**: if you don't find your platform bellow you can use the `WEB` version
+
+- Web
+- Mobile
+  - Android
+  - IOS (not yet)
+- Desktop
+  - Linux
+  - Windows (not yet)
+  - Mac (not yet)
 
 ## Demo
 
