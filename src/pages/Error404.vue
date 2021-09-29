@@ -1,29 +1,30 @@
 <template>
-  <div class="fullscreen bg-blue text-white text-center q-pa-md flex flex-center">
+  <q-page class="fullscreen bg-primary text-center q-pa-md flex flex-center">
     <div>
       <div style="font-size: 30vh">
         404
       </div>
 
-      <div class="text-h2" style="opacity:.4">
-        Oops. Nothing here...
+      <div class="text-h2 text-white">
+        Oops. Nothing Here...
       </div>
 
       <q-btn
         class="q-mt-xl"
         color="white"
-        text-color="blue"
-        unelevated
+        text-color="primary"
+        rounded
+        size="lg"
         to="/"
         label="Go Home"
         no-caps
       />
     </div>
-  </div>
+  </q-page>
 </template>
 
 <script>
 export default {
-  name: 'Error404'
-}
+  name: "Error404",
+};
 </script>

@@ -22,17 +22,6 @@
                 </q-btn>
               </q-item-section>
             </q-item>
-            <q-item v-ripple>
-              <q-item-section avatar>
-                <q-icon name="mdi-volume-off" />
-              </q-item-section>
-              <q-item-section>muted channedl when playing</q-item-section>
-              <q-item-section avatar>
-                <q-toggle color="primary" v-model="muted">
-                  <q-tooltip>Toggle Mute</q-tooltip>
-                </q-toggle>
-              </q-item-section>
-            </q-item>
           </q-list>
         </q-card-section>
       </q-card>
@@ -68,7 +57,6 @@ export default {
   data: () => ({
     title: "Settings",
     confirmDelete: false,
-    muted: false,
   }),
   methods: {
     deleteAll() {

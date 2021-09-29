@@ -1,23 +1,5 @@
 <template>
   <q-page>
-    <q-tabs
-      v-if="false"
-      v-model="selectedCategory"
-      class="bg-primary text-secondary"
-      active-bg-color="primary"
-      active-color="white"
-      mobile-arrows
-      outside-arrows
-    >
-      <q-tab
-        v-for="cat in categories"
-        :key="cat"
-        @click="getChannelsByCategory(cat)"
-        :name="cat"
-        :label="cat"
-      />
-    </q-tabs>
-
     <q-drawer v-model="channelsDrawerOpen" show-if-above bordered>
       <q-select
         filled

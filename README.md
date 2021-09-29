@@ -9,10 +9,10 @@ The app allows you to watch any TV channel you want only through your ready and 
 **Note**: if you don't find your platform bellow you can use the `WEB` version
 
 - Web
-- Mobile
+- Mobile app
   - Android
   - IOS (not yet)
-- Desktop
+- Desktop app
   - Linux
   - Windows (not yet)
   - Mac (not yet)
@@ -78,6 +78,10 @@ yarn build:electron
 ### Customize the configuration
 
 See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
+
+### CHANGELOG
+
+[CHANGELOG](./CHANGELOG.md)
 
 ### LICENSE
 

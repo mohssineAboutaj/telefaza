@@ -5,8 +5,6 @@ export default [
     path: "/",
     component: Home,
   },
-  // Always leave this as last one,
-  // but you can also remove it
   {
     path: "/about",
     component: () => import("pages/About.vue"),
@@ -15,6 +13,9 @@ export default [
     path: "/settings",
     component: () => import("pages/Settings.vue"),
   },
+
+  // Always leave this as last one,
+  // but you can also remove it
   {
     path: "*",
     component: () => import("pages/Error404.vue"),

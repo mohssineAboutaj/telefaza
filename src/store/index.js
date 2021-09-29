@@ -14,8 +14,8 @@ Vue.use(Vuex);
  * with the Store instance.
  */
 
-export default function(/* { ssrContext } */) {
-  const Store = new Vuex.Store({
+export default () => {
+  return new Vuex.Store({
     modules: {
       channelsModule,
     },
@@ -24,6 +24,4 @@ export default function(/* { ssrContext } */) {
     // for dev mode only
     strict: process.env.DEBUGGING,
   });
-
-  return Store;
-}
+};

@@ -11,12 +11,17 @@ result.forEach(r => {
   }
 
   // update/set id
-  if (isEmpty(r.tvg.id)) {
-    r.tvg.id = lowerCase(r.name).replace(/ /g, ".");
-  }
+  r.id = lowerCase(r.tvg.id).replace(/ /g, ".");
 
   // filter adults
   if (lowerCase(r.category) !== "xxx") {
+    // remove non-used props
+    delete r.logo;
+    delete r.languages;
+    delete r.countries;
+    delete r.tvg;
+
+    // push it
     items.push(r);
   }
 });
