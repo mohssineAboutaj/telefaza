@@ -196,6 +196,8 @@ export default {
     });
   },
   created() {
+    this.$root.$emit("update-appbar-title-event", this.title);
+
     this.inFav();
     this.$store.getters.getAllChannels.forEach(el => {
       this.channelsList.push(el);
@@ -222,9 +224,6 @@ export default {
   meta() {
     return {
       title: this.title,
-      titleTemplate: function(title) {
-        return `${this.title} | ${productName}`;
-      },
       meta: {
         description: { name: "description", content: description },
         keywords: { name: "keywords", content: keywords.join(",") },

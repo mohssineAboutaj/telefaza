@@ -1,23 +1,17 @@
 <template>
   <q-page class="fullscreen bg-primary text-center q-pa-md flex flex-center">
     <div>
-      <div style="font-size: 30vh">
-        404
-      </div>
+      <div style="font-size: 30vh">404</div>
 
-      <div class="text-h2 text-white">
-        Oops. Nothing Here...
-      </div>
+      <h2>Oops. Nothing Here...</h2>
 
       <q-btn
-        class="q-mt-xl"
         color="white"
         text-color="primary"
         rounded
-        size="lg"
+        size="md"
         to="/"
         label="Go Home"
-        no-caps
       />
     </div>
   </q-page>
@@ -26,5 +20,8 @@
 <script>
 export default {
   name: "Error404",
+  meta() {
+    return { title: "404" };
+  },
 };
 </script>

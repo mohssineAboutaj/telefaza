@@ -20,6 +20,13 @@
 
       <q-toolbar-title class="text-capitalize">{{ title }}</q-toolbar-title>
 
+      <q-btn
+        v-bind="iconsSharedProps"
+        icon="mdi-plus"
+        aria-label="Add"
+        to="/custom-channels"
+      />
+
       <q-btn icon="mdi-dots-vertical" aria-label="Setting">
         <q-menu>
           <q-list>
@@ -30,12 +37,13 @@
               active-class="text-white bg-primary"
               router
               exact
-              @click="$root.$emit('update-appbar-title-event', item.label)"
             >
               <q-item-section avatar>
                 <q-icon :name="item.icon" />
               </q-item-section>
-              <q-item-section>{{ item.label }}</q-item-section>
+              <q-item-section class="text-capitalize">
+                {{ item.label }}
+              </q-item-section>
             </q-item>
           </q-list>
         </q-menu>

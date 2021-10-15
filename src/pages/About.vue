@@ -1,9 +1,9 @@
 <template>
   <q-page-container>
-    <q-page padding>
-      <q-card>
+    <q-page>
+      <q-card padding>
         <q-card-section>
-          <h2 class="text-h2 text-center text-capitalize">about</h2>
+          <h2 class="text-h2 text-center text-capitalize">{{ title }}</h2>
         </q-card-section>
         <q-card-section>{{ description }}</q-card-section>
       </q-card>
@@ -23,12 +23,7 @@ export default {
     this.$root.$emit("update-appbar-title-event", this.title);
   },
   meta() {
-    return {
-      title: this.title,
-      titleTemplate: function(title) {
-        return `${this.title} | ${productName}`;
-      },
-    };
+    return { title: this.title };
   },
 };
 </script>

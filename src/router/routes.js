@@ -13,6 +13,10 @@ export default [
     path: "/settings",
     component: () => import("pages/Settings.vue"),
   },
+  {
+    path: "/custom-channels",
+    component: () => import("pages/CustomChannels.vue"),
+  },
 
   // Always leave this as last one,
   // but you can also remove it

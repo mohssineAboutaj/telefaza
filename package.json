@@ -37,6 +37,7 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^7.7.0",
     "eslint-webpack-plugin": "^2.4.0",
+    "nodejs-file-downloader": "^4.7.4",
     "write-json": "^3.0.1"
   },
   "browserslist": [

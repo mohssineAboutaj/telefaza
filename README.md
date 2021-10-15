@@ -1,10 +1,29 @@
 # Telefaza (telefaza)
 
+- [Telefaza (telefaza)](#telefaza-telefaza)
+  - [About](#about)
+  - [Available Versions](#available-versions)
+  - [Demo](#demo)
+  - [Release](#release)
+  - [Devlopement](#devlopement)
+    - [Install Dependencies](#install-dependencies)
+    - [Development Mode](#development-mode)
+    - [Build The App For Production](#build-the-app-for-production)
+      - [SPA (Default)](#spa-default)
+      - [Android (Capacitor)](#android-capacitor)
+      - [IOS (Capacitor)](#ios-capacitor)
+      - [Desktop (Electron)](#desktop-electron)
+    - [Fetch And Parse Data](#fetch-and-parse-data)
+    - [Lint The Files](#lint-the-files)
+    - [Customize the configuration](#customize-the-configuration)
+    - [CHANGELOG](#changelog)
+    - [LICENSE](#license)
+
 ## About
 
-The app allows you to watch any TV channel you want only through your ready and collects you most of the channels you want in one place without having to search for each one separately
+A cross-platform built with [Quasar Framework](https://quasar.dev/) the [Vuejs](http://vuejs.org/) framework, The app allows you to watch any TV channel you want only through your device and collects you most of the channels you want in one place without having to search for each one separately
 
-## Available versions
+## Available Versions
 
 **Note**: if you don't find your platform bellow you can use the `WEB` version
 
@@ -19,7 +38,7 @@ The app allows you to watch any TV channel you want only through your ready and 
 
 ## Demo
 
-[Live Preview](https://telefaza.netlify.app/)
+[Live Preview In The Browser](https://telefaza.netlify.app/)
 
 ## Release
 
@@ -29,25 +48,19 @@ The app allows you to watch any TV channel you want only through your ready and 
 
 **Note**: i prefer to use `yarn` instead of `npm`
 
-### Install dependencies
+### Install Dependencies
 
 ```bash
 yarn
 ```
 
-### Start the app in development mode (hot-code reloading, error reporting, etc.)
+### Development Mode
 
 ```bash
 yarn dev
 ```
 
-### Lint the files
-
-```bash
-yarn lint
-```
-
-### Build the app for production
+### Build The App For Production
 
 #### SPA (Default)
 
@@ -73,6 +86,18 @@ yarn build:ios
 
 ```bash
 yarn build:electron
+```
+
+### Fetch And Parse Data
+
+```bash
+yarn convert
+```
+
+### Lint The Files
+
+```bash
+yarn lint
 ```
 
 ### Customize the configuration
