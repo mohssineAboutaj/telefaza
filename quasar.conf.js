@@ -85,7 +85,11 @@ module.exports = function(/* ctx */) {
     framework: {
       iconSet: "mdi-v5", // Quasar icon set
       lang: "en-us", // Quasar language pack
-      config: {},
+      config: {
+        notify: {
+          /* look at QuasarConfOptions from the API card */
+        },
+      },
 
       // Possible values for "importStrategy":
       // * 'auto' - (DEFAULT) Auto-import needed Quasar components & directives
@@ -100,7 +104,7 @@ module.exports = function(/* ctx */) {
       // directives: [],
 
       // Quasar plugins
-      plugins: ["Meta"],
+      plugins: ["Meta", "Notify"],
     },
 
     // animations: 'all', // --- includes all animations

@@ -1,60 +1,62 @@
 <template>
   <q-page-container>
     <q-page padding>
-      <q-card padding>
-        <q-card-section>
-          <h2 class="text-h2 text-center text-capitalize">{{ title }}</h2>
-          <div class="text-right">
-            <q-btn
-              color="white"
-              text-color="primary"
-              icon="mdi-plus"
-              label="add new channel"
-              rounded
-              @click="addItemFn()"
-            />
-          </div>
-        </q-card-section>
-        <q-card-section>
-          <q-list>
-            <q-item v-for="item in items" :key="item.id">
-              <q-item-section avatar>
-                <q-icon name="mdi-television" />
-              </q-item-section>
-              <q-item-section>{{ item.name }}</q-item-section>
-              <q-item-section avatar>
-                <div>
-                  <q-btn
-                    class="q-ma-xs"
-                    color="positive"
-                    icon="mdi-pencil"
-                    round
-                    size="sm"
-                    @click="editItemFn(item)"
-                  >
-                    <q-tooltip>Delete</q-tooltip>
-                  </q-btn>
-                  <q-btn
-                    class="q-ma-xs"
-                    color="negative"
-                    icon="mdi-delete"
-                    round
-                    size="sm"
-                    @click="deleteItemFn(item)"
-                  >
-                    <q-tooltip>Delete</q-tooltip>
-                  </q-btn>
-                </div>
-              </q-item-section>
-            </q-item>
-          </q-list>
-        </q-card-section>
-      </q-card>
+      <div class="row justify-center text-capitalize">
+        <q-card style="width: 750px">
+          <q-card-section>
+            <h2 class="text-h2 text-center text-capitalize">{{ title }}</h2>
+            <div class="text-right">
+              <q-btn
+                color="white"
+                text-color="primary"
+                icon="mdi-plus"
+                label="add new channel"
+                rounded
+                @click="addItemFn()"
+              />
+            </div>
+          </q-card-section>
+          <q-card-section>
+            <q-list>
+              <q-item v-for="item in items" :key="item.uuid">
+                <q-item-section avatar>
+                  <q-icon name="mdi-television" />
+                </q-item-section>
+                <q-item-section>{{ item.name }}</q-item-section>
+                <q-item-section avatar>
+                  <div>
+                    <q-btn
+                      class="q-ma-xs"
+                      color="positive"
+                      icon="mdi-pencil"
+                      round
+                      size="sm"
+                      @click="editItemFn(item)"
+                    >
+                      <q-tooltip>Edit</q-tooltip>
+                    </q-btn>
+                    <q-btn
+                      class="q-ma-xs"
+                      color="negative"
+                      icon="mdi-delete"
+                      round
+                      size="sm"
+                      @click="deleteItemFn(item)"
+                    >
+                      <q-tooltip>Delete</q-tooltip>
+                    </q-btn>
+                  </div>
+                </q-item-section>
+              </q-item>
+            </q-list>
+          </q-card-section>
+        </q-card>
+      </div>
     </q-page>
 
     <!-- dialog -->
     <q-dialog v-model="dialog" persistent>
-      <q-card>
+      <q-card style="width: 500px">
         <q-card-section class="row">
           <div class="text-h6 text-capitalize">{{ formTitle }}</div>
           <q-space />
@@ -74,7 +76,7 @@
         <!-- add/edit -->
         <template v-else>
           <q-card-section class="row items-center">
-            <q-form class="q-gutter-md">
+            <q-form class="full-width" ref="theForm">
               <q-input
                 v-model="editedItem.name"
                 type="text"
@@ -96,7 +98,6 @@
             <q-btn
               :label="action === 'add' ? 'Save' : 'Update'"
               color="positive"
-              :disable="!editedItem.name || !editedItem.url"
               @click="saveFn()"
             />
           </q-card-actions>
@@ -107,13 +108,23 @@
 </template>
 
 <script>
+import { Notify } from "quasar";
+
 export default {
   name: "CustomChannels",
   data() {
-    const defaultFields = { id: null, name: "", url: "" };
+    const defaultFields = {
+      id: null,
+      category: "Custom",
+      name: "",
+      url: "",
+      uuid: "",
+    };
 
     return {
+      // general
       title: "Custom Channels",
+      lsName: "customs",
       // items
       items: [],
       editedItem: defaultFields,
@@ -135,46 +146,88 @@ export default {
           return "delete channel";
       }
     },
+    valid() {
+      return (
+        !this.isEmpty(this.editedItem.name) && this.isUrl(this.editedItem.url)
+      );
+    },
   },
   methods: {
+    /// crud
+    //// create/add
     addItemFn() {
       this.openAndSetDialogMode("add");
+      this.editedItem = Object.assign({}, this.defaultItem);
     },
+    //// update/edit
     editItemFn(item) {
       this.openAndSetDialogMode("edit");
-      this.editedItem = item;
+      this.editedItem = Object.assign({}, item);
     },
+    //// delete
     deleteItemFn(item) {
       this.openAndSetDialogMode("delete");
-      this.editedItem = item;
+      this.editedItem = Object.assign({}, item);
     },
+    deleteFn() {
+      const index = this.findIndex(this.items, { uuid: this.editedItem.uuid });
+      this.items.splice(index, 1);
+      this.closeDialog();
+    },
+    /// dialog/modal
     openAndSetDialogMode(mod) {
       this.dialog = true;
       this.action = mod;
     },
     closeDialog() {
       this.dialog = false;
-      this.editedItem = Object.assign({}, this.defaultItem);
+      this.$nextTick(() => {
+        this.editedItem = Object.assign({}, this.defaultItem);
+        this.updateLocalStorage();
+      });
     },
+    /// save new, save update
     saveFn() {
-      if (this.action === "add") {
-        this.editedItem.category = "Custom";
-        this.editedItem.id = String(this.editedItem.name).replace(/ /g, ".");
-        this.items.push(this.editedItem);
+      if (this.valid) {
+        // create or update id
+        this.editedItem.id = this.setID(this.editedItem.name);
+
+        if (this.action === "add") {
+          this.editedItem.uuid = this.uuid();
+          this.items.unshift(this.editedItem);
+        } else {
+          const index = this.findIndex(this.items, {
+            uuid: this.editedItem.uuid,
+          });
+          Object.assign(this.items[index], this.editedItem);
+        }
+        this.closeDialog();
       } else {
-        const index = this.items[this.items.indexOf(this.editedItem)];
-        Object.assign(index, this.editedItem);
+        Notify.create({
+          message: "Invalid Inputs",
+          icon: "mdi-alert",
+          color: "negative",
+          position: "top",
+        });
       }
-      this.closeDialog();
     },
-    deleteFn() {
-      const index = this.items[this.items.indexOf(this.editedItem)];
-      this.items.splice(index, 1);
-      this.closeDialog();
+    /// utils
+    setID(name) {
+      return String(name).replace(/ /g, ".");
+    },
+    /// localStorage
+    updateLocalStorage() {
+      localStorage.setItem(this.lsName, JSON.stringify(this.items));
+    },
+    fillFromLocalStorage() {
+      JSON.parse(localStorage.getItem(this.lsName)).forEach(c => {
+        this.items.push(c);
+      });
     },
   },
   created() {
     this.$root.$emit("update-appbar-title-event", this.title);
+    this.fillFromLocalStorage();
   },
   meta() {
     return { title: this.title };

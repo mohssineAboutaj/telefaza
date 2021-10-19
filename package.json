@@ -1,6 +1,6 @@
 {
   "name": "telefaza",
-  "version": "1.0.9",
+  "version": "1.1.0",
   "description": "watch your favourite TV channels in one place, no need to search for it, and just from your computer or mobile",
   "productName": "Telefaza",
   "author": "Mohssine Aboutaj",
@@ -22,6 +22,7 @@
     "core-js": "^3.6.5",
     "lodash": "^4.17.21",
     "quasar": "^1.0.0",
+    "uuid": "^8.3.2",
     "vue-player-media": "^1.1.4"
   },
   "devDependencies": {

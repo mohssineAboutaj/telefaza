@@ -20,7 +20,7 @@ new Downloader({ url, directory: dir })
       r.id = lowerCase(r.tvg.id).replace(/ /g, ".");
 
       // filter adults
-      if (lowerCase(r.category) !== "xxx") {
+      if (!["xxx"].includes(lowerCase(r.category))) {
         // remove non-used props
         delete r.logo;
         delete r.languages;

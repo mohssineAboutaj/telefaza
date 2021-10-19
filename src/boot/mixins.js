@@ -1,16 +1,20 @@
-import { isEmpty, lowerCase, startCase } from "lodash";
+import { isEmpty, lowerCase, startCase, findIndex } from "lodash";
+import { v4 as uuid } from "uuid";
 
 export default ({ Vue }) => {
   Vue.mixin({
     methods: {
       // lodash
-      isEmpty: c => isEmpty(c),
-      lowerCase: c => lowerCase(c),
-      startCase: c => startCase(c),
+      isEmpty,
+      lowerCase,
       titleCase: c => startCase(c),
+      findIndex,
+      uuid,
       // custom
-      hi: () => {
-        console.log("hi");
+      isUrl: value => {
+        return (
+          !isEmpty(value) && value.startsWith("http") && value.endsWith(".m3u8")
+        );
       },
     },
   });

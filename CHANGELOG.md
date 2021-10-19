@@ -1,5 +1,9 @@
 # Telefaza (telefaza) / CHANGELOG
 
+## v1.1.0
+
+- ability to add custom channels
+
 ## v1.0.9
 
 - reduce data file size

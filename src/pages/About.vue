@@ -1,12 +1,14 @@
 <template>
   <q-page-container>
-    <q-page>
-      <q-card padding>
-        <q-card-section>
-          <h2 class="text-h2 text-center text-capitalize">{{ title }}</h2>
-        </q-card-section>
-        <q-card-section>{{ description }}</q-card-section>
-      </q-card>
+    <q-page padding>
+      <div class="row justify-center text-capitalize">
+        <q-card style="width: 750px">
+          <q-card-section>
+            <h2 class="text-h2 text-center text-capitalize">{{ title }}</h2>
+          </q-card-section>
+          <q-card-section>{{ description }}</q-card-section>
+        </q-card>
+      </div>
     </q-page>
   </q-page-container>
 </template>

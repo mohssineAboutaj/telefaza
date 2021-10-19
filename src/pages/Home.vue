@@ -34,7 +34,7 @@
       </q-input>
       <q-separator spaced />
 
-      <q-scroll-area id="scroll-area-with-virtual-scroll" style="height: 70vh">
+      <q-scroll-area id="scroll-area-with-virtual-scroll" style="height: 60vh">
         <q-virtual-scroll
           :items="channelsList"
           scroll-target="#scroll-area-with-virtual-scroll > .scroll"
@@ -170,9 +170,6 @@ export default {
       this.isFavChannel = this.$store.getters.checkFav(
         this.selectedChannel.name,
       );
-    },
-    gg(g) {
-      console.log(g);
     },
     filterFn(val, update) {
       update(() => {
