@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import { description, productName } from "../../package.json";
+import { description } from "../../package.json";
 
 export default {
   data: () => ({

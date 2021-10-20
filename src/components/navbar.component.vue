@@ -54,6 +54,7 @@
 
 <script>
 import { productName, description, keywords } from "../../package.json";
+import { links } from "../config";
 
 export default {
   name: "NavbarComponent",
@@ -68,27 +69,34 @@ export default {
     fav: false,
     startWatching: false,
     title: productName,
-    items: [
-      {
-        label: "home",
-        icon: "mdi-movie",
-        to: "/",
-      },
-      {
-        label: "about",
-        icon: "mdi-information",
-        to: "/about",
-      },
-      {
-        label: "settings",
-        icon: "mdi-cog",
-        to: "/settings",
-      },
-    ],
   }),
   computed: {
     isSmall() {
       return this.$q.screen.sm || this.$q.screen.xs;
+    },
+    items() {
+      return [
+        {
+          label: "home",
+          icon: "mdi-movie",
+          to: "/",
+        },
+        {
+          label: "about",
+          icon: "mdi-information",
+          to: "/about",
+        },
+        {
+          label: "donation",
+          icon: "mdi-currency-usd",
+          to: "/donation",
+        },
+        {
+          label: "settings",
+          icon: "mdi-cog",
+          to: "/settings",
+        },
+      ];
     },
   },
   methods: {
