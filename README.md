@@ -2,6 +2,7 @@
 
 - [Telefaza (telefaza)](#telefaza-telefaza)
   - [About](#about)
+  - [Donation](#donation)
   - [Available Versions](#available-versions)
   - [Demo](#demo)
   - [Release](#release)
@@ -23,9 +24,16 @@
 
 A cross-platform built with [Quasar Framework](https://quasar.dev/) the [Vuejs](http://vuejs.org/) framework, The app allows you to watch any TV channel you want only through your device and collects you most of the channels you want in one place without having to search for each one separately
 
+## Donation
+
+Your donation will be very helpful for mw to stay motivated & keep this project up-to-date
+
+- [Direct In PayPal](https://www.buymeacoffee.com/mohssineAboutaj)
+- [With BuyMeCoffee](https://paypal.me/mohssineaboutaj)
+
 ## Available Versions
 
-**Note**: if you don't find your platform bellow you can use the `WEB` version
+**Note**: if you don't find your platform bellow you can use the [`WEB` version](#demo)
 
 - Web
 - Mobile app

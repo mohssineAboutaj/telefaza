@@ -1,13 +1,10 @@
 import { isEmpty, lowerCase } from "lodash";
-import items from "../data/data.json";
+import data from "../data/data.json";
 const { toggleArrayValue } = require("@mohssineaboutaj/utils");
 const favListLocalStorageKey = "fav";
 
 export default {
-  state: {
-    data: items,
-    favList: [],
-  },
+  state: { data, favList: [] },
   getters: {
     getAllChannels({ data }) {
       return data;

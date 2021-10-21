@@ -91,6 +91,7 @@
                 label="URL"
                 color="white"
                 filled
+                hint="URL must be ends with .m3u8 extension"
               />
             </q-form>
           </q-card-section>

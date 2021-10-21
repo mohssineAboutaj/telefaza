@@ -66,5 +66,14 @@
     "node": ">= 10.18.1",
     "npm": ">= 6.13.4",
     "yarn": ">= 1.21.1"
-  }
+  },
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohssineAboutaj/telefaza.git"
+  },
+  "bugs": {
+    "url": "https://github.com/mohssineAboutaj/telefaza/issues"
+  },
+  "homepage": "https://github.com/mohssineAboutaj/telefaza#readme"
 }

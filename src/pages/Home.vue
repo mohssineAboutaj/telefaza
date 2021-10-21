@@ -204,7 +204,7 @@ export default {
     this.$store.getters.getCategories.forEach(cat => {
       this.categories.push(this.lowerCase(cat));
     });
-    this.categories.unshift("favourites");
+    this.categories.unshift("custom", "favourites");
 
     this.closeLeftDrawer();
 

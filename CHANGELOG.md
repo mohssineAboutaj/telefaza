@@ -3,6 +3,7 @@
 ## v1.1.0
 
 - ability to add custom channels
+- add donation links
 
 ## v1.0.9
 

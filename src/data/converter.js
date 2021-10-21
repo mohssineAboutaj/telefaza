@@ -1,14 +1,22 @@
+// modules
+const { rmSync } = require("fs");
 const { isEmpty, lowerCase, uniqBy } = require("lodash");
 const writeJson = require("write-json");
 const Downloader = require("nodejs-file-downloader");
 
-const dir = process.cwd() + "/src/data/";
+// variables
+const dir = __dirname + "/";
 const url = "https://iptv-org.github.io/iptv/channels.json";
+const jsonFilePath = dir + "channels.json";
 
+// remove old file
+rmSync(jsonFilePath);
+
+// download and parse new file
 new Downloader({ url, directory: dir })
   .download()
   .then(() => {
-    const result = require(dir + "channels.json");
+    const result = require(jsonFilePath);
     const items = [];
 
     result.forEach(r => {
