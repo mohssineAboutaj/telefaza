@@ -30,6 +30,7 @@ Your donation will be very helpful for mw to stay motivated & keep this project 
 
 - [With BuyMeCoffee](https://www.buymeacoffee.com/mohssineAboutaj)
 - [Direct In PayPal](https://paypal.me/mohssineaboutaj)
+- Or just give me a star, that would be amazing
 
 ## Available Versions
 

@@ -33,7 +33,9 @@
                       size="sm"
                       @click="editItemFn(item)"
                     >
-                      <q-tooltip>Edit</q-tooltip>
+                      <q-tooltip anchor="top middle" self="top middle">
+                        Edit
+                      </q-tooltip>
                     </q-btn>
                     <q-btn
                       class="q-ma-xs"
@@ -43,7 +45,9 @@
                       size="sm"
                       @click="deleteItemFn(item)"
                     >
-                      <q-tooltip>Delete</q-tooltip>
+                      <q-tooltip anchor="top middle" self="top middle">
+                        Delete
+                      </q-tooltip>
                     </q-btn>
                   </div>
                 </q-item-section>
@@ -173,6 +177,7 @@ export default {
     deleteFn() {
       const index = this.findIndex(this.items, { uuid: this.editedItem.uuid });
       this.items.splice(index, 1);
+      this.$store.commit("deleteCustomInList", this.editedItem);
       this.closeDialog();
     },
     /// dialog/modal
@@ -196,11 +201,13 @@ export default {
         if (this.action === "add") {
           this.editedItem.uuid = this.uuid();
           this.items.unshift(this.editedItem);
+          this.$store.commit("addCustomToList", this.editedItem);
         } else {
           const index = this.findIndex(this.items, {
             uuid: this.editedItem.uuid,
           });
           Object.assign(this.items[index], this.editedItem);
+          this.$store.commit("updateCustomInList", this.editedItem);
         }
         this.closeDialog();
       } else {

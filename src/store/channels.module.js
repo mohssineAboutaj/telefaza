@@ -1,4 +1,4 @@
-import { isEmpty, lowerCase } from "lodash";
+import { isEmpty, lowerCase, findIndex } from "lodash";
 import data from "../data/data.json";
 const { toggleArrayValue } = require("@mohssineaboutaj/utils");
 const favListLocalStorageKey = "fav";
@@ -7,11 +7,6 @@ export default {
   state: {
     data: [...data, ...JSON.parse(window.localStorage.getItem("customs"))],
     favList: [],
-  },
-  mutations: {
-    updateList({ date }, payload) {
-      date.push(payload);
-    },
   },
   getters: {
     getAllChannels({ data }) {
@@ -52,6 +47,23 @@ export default {
     },
   },
   mutations: {
+    // customs
+    addCustomToList(state, payload) {
+      state.data.push(payload);
+    },
+    updateCustomInList(state, item) {
+      const index = findIndex(state.data, {
+        uuid: item.uuid,
+      });
+      Object.assign(state.data[index], item);
+    },
+    deleteCustomInList(state, item) {
+      const index = findIndex(state.data, {
+        uuid: item.uuid,
+      });
+      state.data.splice(index, 1);
+    },
+    // favourites
     toggleFav(state, payload) {
       const { favList } = state;
       state.favList = toggleArrayValue(favList, payload);

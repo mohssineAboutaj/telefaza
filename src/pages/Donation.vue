@@ -7,7 +7,8 @@
           periodically and continuously to make it better and better
         </p>
         <p>
-          choose one of these ways bellow to donate me :)
+          choose one of these ways bellow to support me
+          <q-icon name="mdi-emoticon-happy" />
         </p>
       </q-card-section>
       <q-card-actions class="q-pa-lg">
@@ -47,6 +48,11 @@ export default {
         label: "buyMeCoffee",
         link: "https://paypal.me/mohssineaboutaj",
         icon: "mdi-coffee",
+      },
+      {
+        label: "Repository Star",
+        link: "https://github.com/mohssineAboutaj/telefaza",
+        icon: "mdi-star",
       },
     ],
   }),

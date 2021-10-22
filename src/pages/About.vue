@@ -5,6 +5,25 @@
       subtitle="some informations about this app"
     >
       <q-card-section>
+        <div class="row justify-center">
+          <q-btn
+            v-for="item in follow"
+            :key="item.label"
+            text-color="white"
+            class="q-ma-xs"
+            :icon="item.icon"
+            :href="item.link"
+            target="_blank"
+            type="a"
+            fab
+          >
+            <q-tooltip anchor="top middle" self="top middle">
+              {{ item.label }}
+            </q-tooltip>
+          </q-btn>
+        </div>
+      </q-card-section>
+      <q-card-section>
         <q-list bordered>
           <q-item v-for="item in items" :key="item.label" class="q-mb-sm">
             <q-item-section avatar>
@@ -45,6 +64,28 @@ export default {
       { icon: "mdi-license", label: "license", content: license },
       { icon: "mdi-source-branch", label: "version", content: version },
       { icon: "mdi-github", label: "repository", content: homepage },
+    ],
+    follow: [
+      {
+        label: "twitter",
+        icon: "mdi-twitter",
+        link: "https://twitter.com/mohssineAboutaj",
+      },
+      {
+        label: "linkedin",
+        icon: "mdi-linkedin",
+        link: "https://www.linkedin.com/in/mohssineAboutaj",
+      },
+      {
+        label: "github",
+        icon: "mdi-github",
+        link: "https://github.com/mohssineAboutaj",
+      },
+      {
+        label: "facebook",
+        icon: "mdi-facebook",
+        link: "https://www.facebook.com/vive.mouhssine",
+      },
     ],
   }),
   created() {

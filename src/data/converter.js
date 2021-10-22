@@ -3,7 +3,6 @@ const { rmSync } = require("fs");
 const { isEmpty, lowerCase, uniqBy } = require("lodash");
 const writeJson = require("write-json");
 const Downloader = require("nodejs-file-downloader");
-const { v4: uuid } = require("uuid");
 
 // variables
 const dir = __dirname + "/";
@@ -31,7 +30,6 @@ new Downloader({ url, directory: dir })
 
         // update/set props
         r.id = lowerCase(r.tvg.id).replace(/ /g, ".");
-        r.uuid = uuid();
 
         // remove non-used props
         delete r.logo;
