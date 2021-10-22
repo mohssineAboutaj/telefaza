@@ -1,33 +1,30 @@
 <template>
   <q-page-container>
-    <q-page padding>
-      <div class="row justify-center">
-        <q-card style="width: 750px">
-          <q-card-section>
-            <h2 class="text-h2 text-center text-capitalize">{{ title }}</h2>
-          </q-card-section>
-          <q-card-section>
-            <q-list bordered>
-              <q-item v-for="item in items" :key="item.label" class="q-mb-sm">
-                <q-item-section avatar>
-                  <q-icon :name="item.icon" />
-                </q-item-section>
-                <q-item-section>
-                  <q-item-label class="q-mb-xs text-capitalize" overline>
-                    {{ item.label }}
-                  </q-item-label>
-                  <q-item-label>{{ item.content }}</q-item-label>
-                </q-item-section>
-              </q-item>
-            </q-list>
-          </q-card-section>
-        </q-card>
-      </div>
-    </q-page>
+    <page-card-component
+      :title="title"
+      subtitle="some informations about this app"
+    >
+      <q-card-section>
+        <q-list bordered>
+          <q-item v-for="item in items" :key="item.label" class="q-mb-sm">
+            <q-item-section avatar>
+              <q-icon :name="item.icon" />
+            </q-item-section>
+            <q-item-section>
+              <q-item-label class="q-mb-xs text-capitalize" overline>
+                {{ item.label }}
+              </q-item-label>
+              <q-item-label>{{ item.content }}</q-item-label>
+            </q-item-section>
+          </q-item>
+        </q-list>
+      </q-card-section>
+    </page-card-component>
   </q-page-container>
 </template>
 
 <script>
+import PageCardComponent from "src/components/page.card.component.vue";
 import {
   description,
   author,
@@ -38,6 +35,7 @@ import {
 } from "../../package.json";
 
 export default {
+  components: { PageCardComponent },
   data: () => ({
     title: "About",
     items: [

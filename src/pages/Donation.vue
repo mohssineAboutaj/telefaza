@@ -1,45 +1,40 @@
 <template>
   <q-page-container>
-    <q-page padding>
-      <div class="row justify-center text-capitalize">
-        <q-card style="width: 750px">
-          <q-card-section>
-            <h2 class="text-h2 text-center text-capitalize">{{ title }}</h2>
-          </q-card-section>
-          <q-card-section class="text-capitalize">
-            <p>
-              Your donation will help me stay motivated to update this app
-              periodically and continuously to make it better and better
-            </p>
-            <p>
-              choose one of these ways bellow to donate me :)
-            </p>
-          </q-card-section>
-          <q-card-actions class="q-pa-lg">
-            <q-btn
-              v-for="(item, i) in items"
-              :key="i"
-              text-color="white"
-              rounded
-              outline
-              class="q-ma-sm q-px-md"
-              size="lg"
-              :label="item.label"
-              :icon="item.icon"
-              no-caps
-              :href="item.link"
-              target="_blank"
-              type="a"
-            />
-          </q-card-actions>
-        </q-card>
-      </div>
-    </q-page>
+    <page-card-component :title="title" subtitle="support the developer">
+      <q-card-section class="text-capitalize">
+        <p>
+          Your donation will help me stay motivated to update this app
+          periodically and continuously to make it better and better
+        </p>
+        <p>
+          choose one of these ways bellow to donate me :)
+        </p>
+      </q-card-section>
+      <q-card-actions class="q-pa-lg">
+        <q-btn
+          v-for="(item, i) in items"
+          :key="i"
+          text-color="white"
+          rounded
+          outline
+          class="q-ma-sm q-px-md"
+          size="lg"
+          :label="item.label"
+          :icon="item.icon"
+          no-caps
+          :href="item.link"
+          target="_blank"
+          type="a"
+        />
+      </q-card-actions>
+    </page-card-component>
   </q-page-container>
 </template>
 
 <script>
+import pageCardComponent from "src/components/page.card.component.vue";
 export default {
+  components: { pageCardComponent },
   data: () => ({
     title: "Donation",
     items: [

@@ -4,7 +4,15 @@ const { toggleArrayValue } = require("@mohssineaboutaj/utils");
 const favListLocalStorageKey = "fav";
 
 export default {
-  state: { data, favList: [] },
+  state: {
+    data: [...data, ...JSON.parse(window.localStorage.getItem("customs"))],
+    favList: [],
+  },
+  mutations: {
+    updateList({ date }, payload) {
+      date.push(payload);
+    },
+  },
   getters: {
     getAllChannels({ data }) {
       return data;

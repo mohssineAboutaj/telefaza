@@ -3,13 +3,15 @@ const { rmSync } = require("fs");
 const { isEmpty, lowerCase, uniqBy } = require("lodash");
 const writeJson = require("write-json");
 const Downloader = require("nodejs-file-downloader");
+const { v4: uuid } = require("uuid");
 
 // variables
 const dir = __dirname + "/";
 const url = "https://iptv-org.github.io/iptv/channels.json";
 const jsonFilePath = dir + "channels.json";
+const dangerCategoriesList = ["xxx"];
 
-// remove old file
+// remove old
 rmSync(jsonFilePath);
 
 // download and parse new file
@@ -20,15 +22,17 @@ new Downloader({ url, directory: dir })
     const items = [];
 
     result.forEach(r => {
-      if (isEmpty(r.category)) {
-        r.category = "Uncategorized";
-      }
-
-      // update/set id
-      r.id = lowerCase(r.tvg.id).replace(/ /g, ".");
-
       // filter adults
-      if (!["xxx"].includes(lowerCase(r.category))) {
+      if (!dangerCategoriesList.includes(lowerCase(r.category))) {
+        // set default category for non-categorized
+        if (isEmpty(r.category)) {
+          r.category = "Uncategorized";
+        }
+
+        // update/set props
+        r.id = lowerCase(r.tvg.id).replace(/ /g, ".");
+        r.uuid = uuid();
+
         // remove non-used props
         delete r.logo;
         delete r.languages;
