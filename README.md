@@ -28,8 +28,8 @@ A cross-platform built with [Quasar Framework](https://quasar.dev/) the [Vuejs](
 
 Your donation will be very helpful for mw to stay motivated & keep this project up-to-date
 
-- [Direct In PayPal](https://www.buymeacoffee.com/mohssineAboutaj)
-- [With BuyMeCoffee](https://paypal.me/mohssineaboutaj)
+- [With BuyMeCoffee](https://www.buymeacoffee.com/mohssineAboutaj)
+- [Direct In PayPal](https://paypal.me/mohssineaboutaj)
 
 ## Available Versions
 
