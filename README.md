@@ -17,8 +17,8 @@
     - [Fetch And Parse Data](#fetch-and-parse-data)
     - [Lint The Files](#lint-the-files)
     - [Customize the configuration](#customize-the-configuration)
-    - [CHANGELOG](#changelog)
-    - [LICENSE](#license)
+  - [CHANGELOG](#changelog)
+  - [LICENSE](#license)
 
 ## About
 
@@ -112,10 +112,10 @@ yarn lint
 
 See [Configuring quasar.conf.js](https://v1.quasar.dev/quasar-cli/quasar-conf-js).
 
-### CHANGELOG
+## CHANGELOG
 
 [CHANGELOG](./CHANGELOG.md)
 
-### LICENSE
+## LICENSE
 
 [MIT](./LICENSE)
