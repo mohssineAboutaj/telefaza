@@ -16,7 +16,8 @@
     "build:ios": "quasar build -m capacitor -T ios",
     "build:electron": "quasar build -m electron",
     "convert": "node ./src/data/converter.js",
-    "lint": "eslint --ext .js,.vue ./"
+    "lint": "eslint --ext .js,.vue ./",
+    "icons": "icongenie generate -m capacitor -i "
   },
   "dependencies": {
     "@capacitor/core": "^2.4.7",

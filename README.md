@@ -20,6 +20,7 @@
       - [Desktop (Electron)](#desktop-electron-1)
     - [Fetch And Parse Data](#fetch-and-parse-data)
     - [Lint The Files](#lint-the-files)
+    - [Generate Icons And Splash Screens](#generate-icons-and-splash-screens)
     - [Customize the configuration](#customize-the-configuration)
   - [CHANGELOG](#changelog)
   - [LICENSE](#license)
@@ -131,6 +132,12 @@ yarn convert
 
 ```bash
 yarn lint
+```
+
+### Generate Icons And Splash Screens
+
+```bash
+yarn icons
 ```
 
 ### Customize the configuration
