@@ -5,7 +5,7 @@
 ### Features
 
 - ability to add custom channels
-- add donation links
+- add donation/support links
 
 ## v1.0.9
 
