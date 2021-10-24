@@ -14,8 +14,11 @@ export default {
   name: "App",
   components: { navbarComponent },
   created() {
-    this.$store.commit("setFav");
+    // set dark mode
     this.$q.dark.set(true);
+
+    // fill store/vuex
+    this.$store.commit("setFav");
   },
 };
 </script>

@@ -5,7 +5,10 @@ const favListLocalStorageKey = "fav";
 
 export default {
   state: {
-    data: [...data, ...JSON.parse(window.localStorage.getItem("customs"))],
+    data: [
+      ...data,
+      ...JSON.parse(window.localStorage.getItem("customs") || []),
+    ],
     favList: [],
   },
   getters: {

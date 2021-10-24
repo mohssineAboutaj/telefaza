@@ -207,7 +207,7 @@ export default {
             uuid: this.editedItem.uuid,
           });
           Object.assign(this.items[index], this.editedItem);
-          this.$store.commit("updateCustomInList", this.editedItem);
+          this.$store.commit("updateCustomInList", this.items[index]);
         }
         this.closeDialog();
       } else {

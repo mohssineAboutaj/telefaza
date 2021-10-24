@@ -9,11 +9,15 @@
   - [Devlopement](#devlopement)
     - [Install Dependencies](#install-dependencies)
     - [Development Mode](#development-mode)
+      - [SPA (defalut)](#spa-defalut)
+      - [SSR (Server-side rendering)](#ssr-server-side-rendering)
+      - [Android (open with android studio)](#android-open-with-android-studio)
+      - [Desktop (electron)](#desktop-electron)
     - [Build The App For Production](#build-the-app-for-production)
       - [SPA (Default)](#spa-default)
       - [Android (Capacitor)](#android-capacitor)
       - [IOS (Capacitor)](#ios-capacitor)
-      - [Desktop (Electron)](#desktop-electron)
+      - [Desktop (Electron)](#desktop-electron-1)
     - [Fetch And Parse Data](#fetch-and-parse-data)
     - [Lint The Files](#lint-the-files)
     - [Customize the configuration](#customize-the-configuration)
@@ -65,8 +69,28 @@ yarn
 
 ### Development Mode
 
+#### SPA (defalut)
+
 ```bash
 yarn dev
+```
+
+#### SSR (Server-side rendering)
+
+```bash
+yarn dev:ssr
+```
+
+#### Android (open with android studio)
+
+```bash
+yarn dev:android
+```
+
+#### Desktop (electron)
+
+```bash
+yarn dev:electron
 ```
 
 ### Build The App For Production

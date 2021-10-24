@@ -9,6 +9,8 @@
   "scripts": {
     "dev": "quasar dev",
     "dev:ssr": "quasar dev m ssr",
+    "dev:android": "quasar dev -m capacitor -T android",
+    "dev:electron": "quasar dev -m electron",
     "build": "quasar build",
     "build:android": "quasar build -m capacitor -T android",
     "build:ios": "quasar build -m capacitor -T ios",

@@ -1,7 +1,7 @@
 {
   "name": "telefaza",
-  "version": "1.0.8",
-  "description": "A Cross-platform streaming/IPTV app",
+  "version": "1.1.0",
+  "description": "watch your favourite TV channels in one place, no need to search for it, and just from your computer or mobile",
   "author": "Mohssine Aboutaj",
   "private": true,
   "dependencies": {
