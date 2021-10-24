@@ -41,12 +41,12 @@ export default {
     items: [
       {
         label: "PayPal",
-        link: "https://www.buymeacoffee.com/mohssineAboutaj",
+        link: "https://paypal.me/mohssineaboutaj",
         icon: "mdi-credit-card",
       },
       {
         label: "buyMeCoffee",
-        link: "https://paypal.me/mohssineaboutaj",
+        link: "https://www.buymeacoffee.com/mohssineAboutaj",
         icon: "mdi-coffee",
       },
       {

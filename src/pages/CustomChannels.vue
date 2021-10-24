@@ -228,7 +228,7 @@ export default {
       localStorage.setItem(this.lsName, JSON.stringify(this.items));
     },
     fillFromLocalStorage() {
-      JSON.parse(localStorage.getItem(this.lsName)).forEach(c => {
+      JSON.parse(localStorage.getItem(this.lsName) || "[]").forEach(c => {
         this.items.push(c);
       });
     },

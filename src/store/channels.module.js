@@ -7,7 +7,7 @@ export default {
   state: {
     data: [
       ...data,
-      ...JSON.parse(window.localStorage.getItem("customs") || []),
+      ...JSON.parse(window.localStorage.getItem("customs") || "[]"),
     ],
     favList: [],
   },
