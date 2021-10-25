@@ -114,6 +114,7 @@
 
 <script>
 import { Notify } from "quasar";
+import { customsListLocalStorageKey, getLocal, setLocal } from "src/config";
 
 export default {
   name: "CustomChannels",
@@ -129,7 +130,6 @@ export default {
     return {
       // general
       title: "Custom Channels",
-      lsName: "customs",
       // items
       items: [],
       editedItem: defaultFields,
@@ -225,10 +225,10 @@ export default {
     },
     /// localStorage
     updateLocalStorage() {
-      localStorage.setItem(this.lsName, JSON.stringify(this.items));
+      setLocal(customsListLocalStorageKey, this.items);
     },
     fillFromLocalStorage() {
-      JSON.parse(localStorage.getItem(this.lsName) || "[]").forEach(c => {
+      getLocal(customsListLocalStorageKey).forEach(c => {
         this.items.push(c);
       });
     },

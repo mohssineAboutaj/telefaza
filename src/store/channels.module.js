@@ -1,14 +1,16 @@
 import { isEmpty, lowerCase, findIndex } from "lodash";
+import {
+  customsListLocalStorageKey,
+  favListLocalStorageKey,
+  getLocal,
+  setLocal,
+} from "src/config";
 import data from "../data/data.json";
 const { toggleArrayValue } = require("@mohssineaboutaj/utils");
-const favListLocalStorageKey = "fav";
 
 export default {
   state: {
-    data: [
-      ...data,
-      ...JSON.parse(window.localStorage.getItem("customs") || "[]"),
-    ],
+    data: [...data, ...getLocal(customsListLocalStorageKey)],
     favList: [],
   },
   getters: {
@@ -70,15 +72,10 @@ export default {
     toggleFav(state, payload) {
       const { favList } = state;
       state.favList = toggleArrayValue(favList, payload);
-      window.localStorage.setItem(
-        favListLocalStorageKey,
-        JSON.stringify(favList),
-      );
+      setLocal(favListLocalStorageKey, favList);
     },
     setFav(state) {
-      const localStorageDataFavList = JSON.parse(
-        window.localStorage.getItem(favListLocalStorageKey),
-      );
+      const localStorageDataFavList = getLocal(favListLocalStorageKey);
       if (!isEmpty(localStorageDataFavList)) {
         state.favList = localStorageDataFavList;
       }
@@ -86,10 +83,7 @@ export default {
     deleteAllFav(state) {
       const { favList } = state;
       state.favList = [];
-      window.localStorage.setItem(
-        favListLocalStorageKey,
-        JSON.stringify(favList),
-      );
+      setLocal(favListLocalStorageKey, favList);
     },
   },
 };

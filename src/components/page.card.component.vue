@@ -1,8 +1,8 @@
 <template>
   <q-page padding>
-    <div class="row justify-center text-capitalize">
+    <div class="row justify-center">
       <q-card style="width: 750px">
-        <q-card-section>
+        <q-card-section class="text-capitalize">
           <h2 class="text-h2 q-mb-sm text-center text-capitalize">
             {{ title }}
           </h2>
