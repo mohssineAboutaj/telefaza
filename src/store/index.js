@@ -14,7 +14,7 @@ Vue.use(Vuex);
  * with the Store instance.
  */
 
-export default () => {
+export default function() {
   return new Vuex.Store({
     modules: {
       channelsModule,
@@ -24,4 +24,4 @@ export default () => {
     // for dev mode only
     strict: process.env.DEBUGGING,
   });
-};
+}
