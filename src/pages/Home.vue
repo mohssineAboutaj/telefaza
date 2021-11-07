@@ -2,6 +2,7 @@
   <q-page>
     <q-drawer v-model="channelsDrawerOpen" show-if-above bordered>
       <q-select
+        ref="categoriesSelectBox"
         filled
         :value="titleCase(selectedCategory)"
         use-input
@@ -20,9 +21,9 @@
       </q-select>
 
       <q-input
+        ref="searchInputBox"
         label-color="white"
         v-model.trim="searchVal"
-        @input="searchForFn()"
         label="Search"
         :hint="`Total Channels: ${channelsList.length}`"
         filled
@@ -32,11 +33,14 @@
           <q-icon name="mdi-magnify" />
         </template>
       </q-input>
-      <q-separator spaced />
+      <q-separator spaced ref="ggg" />
 
-      <q-scroll-area id="scroll-area-with-virtual-scroll" style="height: 60vh">
+      <q-scroll-area
+        id="scroll-area-with-virtual-scroll"
+        :style="`height: ${virtualScrollHeight}px`"
+      >
         <q-virtual-scroll
-          :items="channelsList"
+          :items="channelsListToRender"
           scroll-target="#scroll-area-with-virtual-scroll > .scroll"
         >
           <template v-slot="{ item: channel, index: c }">
@@ -51,7 +55,7 @@
               <q-item-section
                 avatar
                 class="q-mx-0 q-px-0"
-                style="min-width: auto;"
+                style="min-width: auto"
               >
                 <q-icon name="mdi-television" />
               </q-item-section>
@@ -67,9 +71,7 @@
     <q-page class="flex flex-center">
       <div v-if="fresh" class="text-center text-capitalize q-pa-md">
         <h1 class="text-h3">{{ originalTitle }}</h1>
-        <h3 class="text-h6">
-          watch your favourite TV channel online
-        </h3>
+        <h3 class="text-h6">watch your favourite TV channel online</h3>
       </div>
       <vue-player
         v-else
@@ -89,38 +91,49 @@ import { productName, description, keywords } from "../../package.json";
 export default {
   name: "Home",
   data: () => ({
+    // fav icon and welcome visibility
     fresh: true,
-    channelsDrawerOpen: false,
+    // titles
     title: "Home",
     originalTitle: productName,
+    // drawer
+    channelsDrawerOpen: false,
+    // active channel
     selectedChannel: {},
+    // favourite
     isFavChannel: false,
+    // search
     searchVal: "",
+    // channels list
     channelsList: [],
     originalList: [],
     allChannelsList: [],
-    options: [],
+    // categories
     categories: [],
     selectedCategory: "all",
+    // player config
+    options: [],
     autoplay: true,
+    // virtual scroll height
+    virtualScrollHeight: 0,
   }),
   computed: {
     screen() {
       return this.$q.screen;
     },
-  },
-  methods: {
-    searchForFn() {
+    channelsListToRender() {
       if (this.isEmpty(this.searchVal)) {
-        this.channelsList = this.originalList;
+        return this.channelsList;
       } else {
-        this.channelsList = this.originalList.filter(el => {
+        return this.channelsList.filter((el) => {
           return (
             this.lowerCase(el.name).includes(this.lowerCase(this.searchVal)) > 0
           );
         });
       }
     },
+  },
+  methods: {
     toggleDarkTheme() {
       this.$q.dark.toggle();
     },
@@ -160,7 +173,7 @@ export default {
       } else {
         this.$store.getters
           .getChannelsByCategory(this.selectedCategory)
-          .forEach(el => {
+          .forEach((el) => {
             this.channelsList.push(el);
             this.originalList.push(el);
           });
@@ -174,10 +187,10 @@ export default {
     filterFn(val, update) {
       update(() => {
         this.options = this.categories
-          .filter(v => {
+          .filter((v) => {
             return v.toLocaleLowerCase().indexOf(val.toLocaleLowerCase()) > -1;
           })
-          .map(o => {
+          .map((o) => {
             return (o = this.titleCase(o));
           });
       });
@@ -196,12 +209,12 @@ export default {
     this.$root.$emit("update-appbar-title-event", this.title);
 
     this.inFav();
-    this.$store.getters.getAllChannels.forEach(el => {
+    this.$store.getters.getAllChannels.forEach((el) => {
       this.channelsList.push(el);
     });
     this.allChannelsList = this.originalList = this.channelsList;
 
-    this.$store.getters.getCategories.forEach(cat => {
+    this.$store.getters.getCategories.forEach((cat) => {
       this.categories.push(this.lowerCase(cat));
     });
     this.categories.unshift("custom", "favourites");
@@ -217,6 +230,13 @@ export default {
       this.selectedCategory = categoryParam;
       this.getChannelsByCategory(this.selectedCategory);
     }
+  },
+  mounted() {
+    this.virtualScrollHeight =
+      window.innerHeight -
+      (this.$refs.categoriesSelectBox.$el.clientHeight +
+        this.$refs.searchInputBox.$el.clientHeight) -
+      30;
   },
   meta() {
     return {
