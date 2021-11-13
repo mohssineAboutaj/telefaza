@@ -74,9 +74,10 @@
             </span>
           </q-card-section>
           <q-card-actions>
-            <q-btn label="Delete" color="negative" @click="deleteFn" />
+            <q-btn rounded label="Delete" color="negative" @click="deleteFn" />
           </q-card-actions>
         </template>
+
         <!-- add/edit -->
         <template v-else>
           <q-card-section class="row items-center">
@@ -101,6 +102,7 @@
           </q-card-section>
           <q-card-actions>
             <q-btn
+              rounded
               :label="action === 'add' ? 'Save' : 'Update'"
               color="positive"
               @click="saveFn()"
@@ -228,7 +230,7 @@ export default {
       setLocal(customsListLocalStorageKey, this.items);
     },
     fillFromLocalStorage() {
-      getLocal(customsListLocalStorageKey).forEach(c => {
+      getLocal(customsListLocalStorageKey).forEach((c) => {
         this.items.push(c);
       });
     },

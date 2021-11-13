@@ -10,5 +10,5 @@ export function getLocal(key) {
 }
 /// setter
 export function setLocal(key, data) {
-  localStorage.getItem(key, JSON.stringify(data));
+  localStorage.setItem(key, JSON.stringify(data));
 }
