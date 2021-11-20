@@ -54,7 +54,6 @@
 
 <script>
 import { productName, description, keywords } from "../../package.json";
-import { links } from "../config";
 
 export default {
   name: "NavbarComponent",
@@ -108,22 +107,22 @@ export default {
     },
   },
   created() {
-    this.$root.$on("update-appbar-title-event", t => {
+    this.$root.$on("update-appbar-title-event", (t) => {
       this.title = t;
     });
 
-    this.$root.$on("start-watching-event", s => {
+    this.$root.$on("start-watching-event", (s) => {
       this.startWatching = s;
     });
 
-    this.$root.$on("set-fav-event", f => {
+    this.$root.$on("set-fav-event", (f) => {
       this.fav = f;
     });
   },
   meta() {
     return {
       title: this.titleCase(this.title),
-      titleTemplate: function(title) {
+      titleTemplate: function () {
         return `${this.title} | ${productName}`;
       },
       meta: {

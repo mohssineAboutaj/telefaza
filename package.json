@@ -1,6 +1,6 @@
 {
   "name": "telefaza",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "watch your favourite TV channels in one place, no need to search for it, and just from your computer or mobile",
   "productName": "Telefaza",
   "author": "Mohssine Aboutaj",
@@ -16,7 +16,7 @@
     "build:ios": "quasar build -m capacitor -T ios",
     "build:electron": "quasar build -m electron",
     "convert": "node ./src/data/converter.js",
-    "lint": "eslint --ext .js,.vue ./",
+    "lint": "eslint --ext .js,.vue ./src/",
     "icons": "icongenie generate -i icon.png"
   },
   "dependencies": {

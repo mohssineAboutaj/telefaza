@@ -46,7 +46,6 @@
 
 <script>
 import pageCardComponent from "src/components/page.card.component.vue";
-import { productName } from "../../package.json";
 
 export default {
   components: { pageCardComponent },

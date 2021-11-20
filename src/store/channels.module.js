@@ -17,16 +17,20 @@ export default {
     getAllChannels({ data }) {
       return data;
     },
-    getChannelById: ({ data }) => id => {
-      return data.find(c => c.id === id);
-    },
-    getChannelByName: ({ data }) => name => {
-      return data.find(c => c.name === name);
-    },
+    getChannelById:
+      ({ data }) =>
+      (id) => {
+        return data.find((c) => c.id === id);
+      },
+    getChannelByName:
+      ({ data }) =>
+      (name) => {
+        return data.find((c) => c.name === name);
+      },
     getCategories({ data }) {
       const list = ["All"];
 
-      data.forEach(d => {
+      data.forEach((d) => {
         const cat = d.category;
         if (!list.includes(cat)) {
           list.push(cat);
@@ -36,20 +40,24 @@ export default {
       // result
       return list.sort();
     },
-    getChannelsByCategory: ({ data }) => cat => {
-      return data.filter(d => lowerCase(d.category) === lowerCase(cat));
-    },
+    getChannelsByCategory:
+      ({ data }) =>
+      (cat) => {
+        return data.filter((d) => lowerCase(d.category) === lowerCase(cat));
+      },
     // favourite fn
     getFavList({ favList, data }) {
-      return data.filter(c => {
+      return data.filter((c) => {
         if (favList.includes(c.name)) {
           return c;
         }
       });
     },
-    checkFav: ({ favList }) => toCheck => {
-      return favList.includes(toCheck);
-    },
+    checkFav:
+      ({ favList }) =>
+      (toCheck) => {
+        return favList.includes(toCheck);
+      },
   },
   mutations: {
     // customs

@@ -20,7 +20,7 @@ new Downloader({ url, directory: dir })
     const result = require(jsonFilePath);
     const items = [];
 
-    result.forEach(r => {
+    result.forEach((r) => {
       // filter adults
       if (!dangerCategoriesList.includes(lowerCase(r.category))) {
         // set default category for non-categorized
@@ -44,7 +44,7 @@ new Downloader({ url, directory: dir })
 
     writeJson(
       dir + "data.json",
-      uniqBy(items, el => {
+      uniqBy(items, (el) => {
         return el.name;
       }),
       () => {
@@ -52,6 +52,6 @@ new Downloader({ url, directory: dir })
       },
     );
   })
-  .catch(err => {
+  .catch((err) => {
     console.log(err);
   });

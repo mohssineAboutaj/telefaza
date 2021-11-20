@@ -115,7 +115,7 @@ export default {
     options: [],
     autoplay: true,
     // virtual scroll height
-    virtualScrollHeight: 0,
+    virtualScrollHeight: 400,
   }),
   computed: {
     screen() {
@@ -230,13 +230,6 @@ export default {
       this.selectedCategory = categoryParam;
       this.getChannelsByCategory(this.selectedCategory);
     }
-  },
-  mounted() {
-    this.virtualScrollHeight =
-      window.innerHeight -
-      (this.$refs.categoriesSelectBox.$el.clientHeight +
-        this.$refs.searchInputBox.$el.clientHeight) -
-      30;
   },
   meta() {
     return {

@@ -14,11 +14,12 @@ Vue.use(Vuex);
  * with the Store instance.
  */
 
-export default function() {
+export default function () {
   return new Vuex.Store({
-    modules: {
-      channelsModule,
-    },
+    // modules: {
+    //   channelsModule,
+    // },
+    ...channelsModule,
 
     // enable strict mode (adds overhead!)
     // for dev mode only
