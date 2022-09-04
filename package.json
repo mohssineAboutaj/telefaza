@@ -1,6 +1,6 @@
 {
   "name": "telefaza",
-  "version": "1.1.21",
+  "version": "1.1.22",
   "description": "watch your favourite TV channels in one place, no need to search for it, and just from your computer or mobile",
   "productName": "Telefaza",
   "author": "Mohssine Aboutaj",
@@ -31,6 +31,7 @@
   },
   "devDependencies": {
     "@quasar/app": "^2.0.0",
+    "axios": "^0.27.2",
     "babel-eslint": "^10.0.1",
     "devtron": "^1.4.0",
     "electron": "^9.0.0",
@@ -42,7 +43,6 @@
     "eslint-config-prettier": "^8.1.0",
     "eslint-plugin-vue": "^7.7.0",
     "eslint-webpack-plugin": "^2.4.0",
-    "nodejs-file-downloader": "^4.7.4",
     "write-json": "^3.0.1"
   },
   "browserslist": [

@@ -1,40 +1,40 @@
 // modules
-const { rmSync } = require("fs");
-const { isEmpty, lowerCase, uniqBy } = require("lodash");
+const { lowerCase, uniqBy, kebabCase } = require("lodash");
 const writeJson = require("write-json");
-const Downloader = require("nodejs-file-downloader");
+const { get } = require("axios");
 
 // variables
 const dir = __dirname + "/";
 const url = "https://iptv-org.github.io/iptv/channels.json";
 const dangerCategoriesList = ["xxx"];
 
-// remove old
-// rmSync(jsonFilePath);
-
-// download and parse new file
-new Downloader({ url, directory: dir })
-  .download()
-  .then(() => {
-    const jsonFilePath = dir + "channels.json";
-    const result = require(jsonFilePath);
+get(url)
+  .then(({ data }) => {
     const items = [];
 
-    result.forEach((r) => {
+    data.forEach((r) => {
+      // convert categories array ot objects to array of string
+      r.categories = Array.from(r.categories, (cat) => {
+        return cat.name;
+      });
+
+      // set default category for non-categorized
+      if (r.categories.length > 0) {
+        r.category = r.categories[0];
+      } else {
+        r.category = "Uncategorized";
+      }
+
       // filter adults
       if (!dangerCategoriesList.includes(lowerCase(r.category))) {
-        // set default category for non-categorized
-        if (isEmpty(r.category)) {
-          r.category = "Uncategorized";
-        }
-
         // update/set props
-        r.id = lowerCase(r.tvg.id).replace(/ /g, ".");
+        r.id = kebabCase(lowerCase(r.name));
 
         // remove non-used props
         delete r.logo;
         delete r.languages;
         delete r.countries;
+        delete r.categories;
         delete r.tvg;
 
         // push it
@@ -50,9 +50,6 @@ new Downloader({ url, directory: dir })
     writeJson(dir + "data.json", uniqData, () => {
       // show message
       console.log("Saved Channels Count:", uniqData.length);
-
-      // remove old
-      rmSync(jsonFilePath);
     });
   })
   .catch((err) => {
