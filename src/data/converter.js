@@ -5,7 +5,7 @@ const { get } = require("axios");
 
 // variables
 const dir = __dirname + "/";
-const url = "https://iptv-org.github.io/iptv/channels.json";
+const url = "https://iptv-org.github.io/api/channels.json";
 const dangerCategoriesList = ["xxx"];
 
 get(url)
